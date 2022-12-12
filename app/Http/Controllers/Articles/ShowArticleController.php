@@ -14,8 +14,8 @@ class ShowArticleController extends Controller
 {
     public function __invoke(Request $request, Article $article): View
     {
-        $article->html = (new CommonMarkConverter())->convertToHtml($article->content);
+        $html = (new CommonMarkConverter())->convert($article->content);
 
-        return view('articles.show', ['article' => $article]);
+        return view('articles.show', ['article' => $article, 'html' => $html]);
     }
 }

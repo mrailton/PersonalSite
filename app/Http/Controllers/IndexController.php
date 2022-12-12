@@ -12,7 +12,7 @@ class IndexController extends Controller
 {
     public function __invoke(Request $request): View
     {
-        $articles = Article::query()->where('published_at', '<', date("Y-m-d H:i:s"))->orderByDesc('published_at')->limit(3)->get();
+        $articles = Article::query()->where('published_at', '<', date('Y-m-d H:i:s'))->orderByDesc('published_at')->limit(3)->get();
 
         return view('index', ['articles' => $articles]);
     }
