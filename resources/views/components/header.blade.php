@@ -22,7 +22,7 @@
                 </li>
 
                 <li class="{{ (request()->is('blog*')) ? 'bg-white text-indigo-600' : '' }} px-3 cursor-pointer hover:bg-white flex items-center hover:text-indigo-600" :class="showMenu && 'py-1'">
-                    <a href="#">Articles</a>
+                    <a href="{{ route('articles.list') }}">Articles</a>
                 </li>
 
                 @auth()

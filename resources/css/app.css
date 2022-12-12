@@ -1,3 +1,5 @@
+@import "../../node_modules/highlight.js/styles/a11y-dark.css";
+
 @tailwind base;
 
 @font-face {
@@ -10,6 +12,15 @@
 
 * {
     font-family: 'JetBrains Mono', monospace;
+}
+
+p > a {
+    text-decoration: underline;
+}
+
+p {
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .pattern {

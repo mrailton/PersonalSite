@@ -34,4 +34,28 @@
             </p>
         </div>
     </section>
+
+    <section class="bg-white py-20">
+        <div class="max-w-5xl px-6 mx-auto text-center">
+            <h2 class="text-2xl font-semibold text-gray-800">Latest Blog Articles</h2>
+
+            <div class="flex flex-col items-center justify-center mt-6">
+                @foreach($articles as $article)
+                    <x-article-list-card :article="$article" />
+                @endforeach()
+            </div>
+
+            <div class="flex items-center justify-center mt-4">
+                <a class="flex items-center text-gray-600 hover:underline hover:text-gray-500"
+                   href="{{ route("articles.list") }}">
+                    <span>View More</span>
+
+                    <svg class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
 </x-app-layout>
