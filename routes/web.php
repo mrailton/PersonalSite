@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Articles\ListArticlesController;
 use App\Http\Controllers\Articles\ShowArticleController;
 use App\Http\Controllers\Auth\CreateLoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\StoreLoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,10 @@ Route::prefix('/login')->name('login.')->middleware('guest')->group(function () 
     Route::post('/', StoreLoginController::class)->name('store');
 });
 
-Route::prefix('/admin')->name('admin.')->middleware('auth:web')->group(function () {
-    Route::get('/', DashboardController::class)->name('dashboard');
+Route::middleware('auth:web')->group(function () {
+    Route::post('/logout', LogoutController::class)->name('auth.logout');
+
+    Route::prefix('/admin')->name('admin.')->group(function () {
+        Route::get('/', DashboardController::class)->name('dashboard');
+    });
 });

@@ -31,7 +31,7 @@
                 <a href="#" class="group block flex-shrink-0">
                     <div class="flex items-center">
                         <div class="ml-3">
-                            <p class="text-sm font-medium text-indigo-200 group-hover:text-white">Logout</p>
+                            <p class="text-sm font-medium text-indigo-200 group-hover:text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</p>
                         </div>
                     </div>
                 </a>
@@ -69,7 +69,7 @@
             <a href="#" class="group block w-full flex-shrink-0">
                 <div class="flex items-center">
                     <div class="ml-3">
-                        <p class="text-xs font-medium text-indigo-200 group-hover:text-white">Logout</p>
+                        <p class="text-xs font-medium text-indigo-200 group-hover:text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</p>
                     </div>
                 </div>
             </a>
