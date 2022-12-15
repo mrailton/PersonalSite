@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\Articles\ListArticlesController as AdminListArticlesController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Articles\ListArticlesController;
 use App\Http\Controllers\Articles\ShowArticleController;
@@ -25,5 +26,9 @@ Route::middleware('auth:web')->group(function () {
 
     Route::prefix('/admin')->name('admin.')->group(function () {
         Route::get('/', DashboardController::class)->name('dashboard');
+
+        Route::prefix('/articles')->name('articles.')->group(function () {
+            Route::get('/', AdminListArticlesController::class)->name('list');
+        });
     });
 });

@@ -12,6 +12,10 @@ class Article extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
     public static function boot(): void
     {
         parent::boot();
