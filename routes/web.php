@@ -14,8 +14,10 @@ Route::get('/', App\Http\Controllers\IndexController::class)->name('index');
 Route::get('/blog', ListArticlesController::class)->name('articles.list');
 Route::get('/blog/{article:slug}', ShowArticleController::class)->name('articles.show');
 
-Route::get('/login', CreateLoginController::class)->name('login.create');
-Route::post('/login', StoreLoginController::class)->name('login.store');
+Route::prefix('/login')->name('login.')->middleware('guest')->group(function () {
+    Route::get('/', CreateLoginController::class)->name('create');
+    Route::post('/', StoreLoginController::class)->name('store');
+});
 
 Route::prefix('/admin')->name('admin.')->middleware('auth:web')->group(function () {
     Route::get('/', DashboardController::class)->name('dashboard');

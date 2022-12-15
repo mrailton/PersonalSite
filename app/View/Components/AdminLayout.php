@@ -12,7 +12,7 @@ class AdminLayout extends Component
     public function __construct(public string $title)
     {
     }
-    
+
     public function render(): View
     {
         return view('components.admin-layout');
