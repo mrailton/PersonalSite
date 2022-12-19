@@ -7,10 +7,6 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    @production
-        <script defer data-domain="markrailton.com" src="https://analytics.markrailton.com/js/plausible.js"></script>
-    @endproduction
-
     <link rel="shortcut icon" href="/img/favicon/favicon.ico">
     <title>Mark Railton</title>
 </head>
