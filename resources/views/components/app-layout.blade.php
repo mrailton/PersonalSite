@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @production
-        <script async src="https://analytics.markrailton.com/tracker.js" data-ackee-server="https://analytics.markrailton.com" data-ackee-domain-id="52206bbe-f25f-4389-b09e-7d0f3b81afe3"></script>
+        <script async defer data-website-id="fa6325a1-6b63-4822-b6bf-865e05e1aed5" src="https://analytics.markrailton.com/umami.js"></script>
     @endproduction
 
     <link rel="shortcut icon" href="/img/favicon/favicon.ico">
