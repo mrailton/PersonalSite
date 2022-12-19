@@ -13,5 +13,9 @@
 <main class="py-12">
     {{ $slot }}
 </main>
+
+@production
+    <script defer data-domain="markrailton.com" src="https://analytics.markrailton.com/js/plausible.js"></script>
+@endproduction
 </body>
 </html>
