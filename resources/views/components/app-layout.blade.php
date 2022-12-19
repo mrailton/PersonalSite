@@ -7,15 +7,15 @@
     <link rel="shortcut icon" href="/img/favicon/favicon.ico">
     <title>Mark Railton</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @production
+        <script defer data-domain="markrailton.com" src="https://analytics.markrailton.com/js/plausible.js"></script>
+    @endproduction
 </head>
 <body>
 <x-header />
 <main class="py-12">
     {{ $slot }}
 </main>
-
-@production
-    <script defer data-domain="markrailton.com" src="https://analytics.markrailton.com/js/plausible.js"></script>
-@endproduction
 </body>
 </html>
