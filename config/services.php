@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'healthcheck' => [
+        'backup_cleanup' => env('HEALTHCHECK_BACKUP_CLEANUP_URL'),
+        'backup_run' => env('HEALTHCHECK_BACKUP_RUN_URL'),
+    ]
 ];
