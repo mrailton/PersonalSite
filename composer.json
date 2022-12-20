@@ -9,7 +9,10 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
+        "laravel/slack-notification-channel": "^2.4",
+        "laravel/tinker": "^2.7",
+        "league/flysystem-aws-s3-v3": "^3.10",
+        "spatie/laravel-backup": "^8.1"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",
