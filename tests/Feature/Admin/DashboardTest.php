@@ -15,6 +15,7 @@ class DashboardTest extends TestCase
         $res = $this->get(route('admin.dashboard'));
 
         $res->assertSee('Dashboard')
+            ->assertSee('Articles')
             ->assertSee('Logout');
     }
 
