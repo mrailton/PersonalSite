@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin\Articles;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Articles\StoreArticleRequest;
+use App\Http\Requests\Admin\Articles\UpsertArticleRequest;
 use App\Models\Article;
 use Illuminate\Http\RedirectResponse;
 
 class StoreArticleController extends Controller
 {
-    public function __invoke(StoreArticleRequest $request): RedirectResponse
+    public function __invoke(UpsertArticleRequest $request): RedirectResponse
     {
         Article::create([
             'title' => $request->get('title'),
