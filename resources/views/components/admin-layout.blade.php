@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    @stack('styles')
     @vite(['resources/css/admin.css', 'resources/js/admin.js'])
 </head>
 <body class="h-full">
@@ -42,5 +43,6 @@
 <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
     @csrf
 </form>
+@stack('scripts')
 </body>
 </html>
