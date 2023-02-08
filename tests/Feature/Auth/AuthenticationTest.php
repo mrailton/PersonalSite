@@ -1,50 +1,44 @@
 <?php
 
-namespace Tests\Feature\Auth;
+declare(strict_types=1);
 
 use App\Models\User;
-use Tests\TestCase;
 
-class AuthenticationTest extends TestCase
-{
-    /** @test */
-    public function login_form_renders(): void
-    {
-        $res = $this->get(route('login.create'));
+test('login form renders', function () {
+    guest();
 
-        $res->assertSee('Mark Railton')
-            ->assertSee('Sign in to your account')
-            ->assertSee('Sign in');
-    }
+    $res = $this->get(route('login.create'));
 
-    /** @test */
-    public function a_registered_user_can_login(): void
-    {
-        $user = User::factory()->create();
+    $res->assertSee('Mark Railton')
+        ->assertSee('Sign in to your account')
+        ->assertSee('Sign in');
+});
 
-        $res = $this->post(route('login.store'), ['email' => $user->email, 'password' => 'password']);
+test('a registered user can login', function () {
+    guest();
 
-        $res->assertRedirectToRoute('admin.dashboard')
-            ->assertSessionDoesntHaveErrors();
-        $this->assertAuthenticated();
-    }
+    $user = User::factory()->create();
 
-    /** @test */
-    public function a_guest_can_not_login_if_not_registered(): void
-    {
-        $res = $this->post(route('login.store'), ['email' => 'no@user.com', 'password' => 'password']);
+    $res = $this->post(route('login.store'), ['email' => $user->email, 'password' => 'password']);
 
-        $res->assertSessionHasErrors(['email']);
-        $this->assertGuest();
-    }
+    $res->assertRedirectToRoute('admin.dashboard')
+        ->assertSessionDoesntHaveErrors();
+    $this->assertAuthenticated();
+});
 
-    /** @test */
-    public function an_authenticated_user_can_not_access_the_login_page(): void
-    {
-        $this->actingAs(User::factory()->create());
+test('a guest can not login if not registered', function () {
+    guest();
 
-        $res = $this->get(route('login.create'));
+    $res = $this->post(route('login.store'), ['email' => 'no@user.com', 'password' => 'password']);
 
-        $res->assertRedirectToRoute('admin.dashboard');
-    }
-}
+    $res->assertSessionHasErrors(['email']);
+    $this->assertGuest();
+});
+
+test('an authenticated user can not access the login page', function () {
+    authenticatedUser();
+
+    $res = $this->get(route('login.create'));
+
+    $res->assertRedirectToRoute('admin.dashboard');
+});

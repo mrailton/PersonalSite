@@ -1,23 +1,15 @@
 <?php
 
-namespace Tests\Feature\Auth;
+declare(strict_types=1);
 
-use App\Models\User;
-use Tests\TestCase;
+test('an authenticated user can logout', function () {
+    authenticatedUser();
 
-class LogoutTest extends TestCase
-{
-    /** @test */
-    public function an_authenticated_user_can_logout(): void
-    {
-        $this->actingAs(User::factory()->create());
+    $this->assertAuthenticated();
+    $res = $this->post(route('auth.logout'));
 
-        $this->assertAuthenticated();
-        $res = $this->post(route('auth.logout'));
+    $res->assertRedirectToRoute('index')
+        ->assertSessionDoesntHaveErrors();
 
-        $res->assertRedirectToRoute('index')
-            ->assertSessionDoesntHaveErrors();
-
-        $this->assertGuest();
-    }
-}
+    $this->assertGuest();
+});
