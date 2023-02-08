@@ -1,30 +1,22 @@
 <?php
 
-namespace Tests\Feature\Admin;
+declare(strict_types=1);
 
-use App\Models\User;
-use Tests\TestCase;
+test('an authenticated user can access the dashboard', function () {
+    authenticatedUser();
 
-class DashboardTest extends TestCase
-{
-    /** @test */
-    public function an_authenticated_user_can_access_the_dashboard(): void
-    {
-        $this->actingAs(User::factory()->create());
+    $res = $this->get(route('admin.dashboard'));
 
-        $res = $this->get(route('admin.dashboard'));
+    $res->assertSee('Dashboard')
+        ->assertSee('Articles')
+        ->assertSee('Logout');
+});
 
-        $res->assertSee('Dashboard')
-            ->assertSee('Articles')
-            ->assertSee('Logout');
-    }
+test('a guest can not access the admin dashboard', function () {
+    guest();
 
-    /** @test */
-    public function a_guest_can_not_access_the_admin_dashboard(): void
-    {
-        $res = $this->get(route('admin.dashboard'));
+    $res = $this->get(route('admin.dashboard'));
 
-        $res->assertRedirectToRoute('login.create');
-        $this->assertGuest();
-    }
-}
+    $res->assertRedirectToRoute('login.create');
+    $this->assertGuest();
+});
