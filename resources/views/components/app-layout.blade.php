@@ -8,6 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+    <a rel="me" href="https://phpc.social/@markrailton" hidden=""></a>
     <title>Mark Railton</title>
 
     @production
@@ -27,6 +28,8 @@
         </script>
         <!-- End Matomo Code -->
     @endproduction
+
+    {{ $head ?? '' }}
 </head>
 <body>
 <x-header />

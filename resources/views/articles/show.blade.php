@@ -1,4 +1,16 @@
 <x-app-layout>
+    <x-slot name="head">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@markrailton84" />
+
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Mark Railton" />
+        <meta property="og:locale" content="en_IE" />
+        <meta property="og:title" content="{{ $article->title }}" />
+        <meta property="og:description" content="Article by Mark Railton" />
+        <meta property="og:url" content="{{ route('articles.show', ['article' => $article]) }}" />
+    </x-slot>
+
     <div class="max-w-4xl px-6 pb-20 mx-auto">
         <h1 class="text-3xl font-semibold text-gray-800 mb-4">{{ $article->title }}</h1>
         <span
