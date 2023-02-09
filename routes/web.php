@@ -7,7 +7,9 @@ use App\Http\Controllers\Admin\Articles\EditArticleController;
 use App\Http\Controllers\Admin\Articles\ListArticlesController as AdminListArticlesController;
 use App\Http\Controllers\Admin\Articles\StoreArticleController;
 use App\Http\Controllers\Admin\Articles\UpdateArticleController;
+use App\Http\Controllers\Admin\Certificates\CreateCertificateController;
 use App\Http\Controllers\Admin\Certificates\ListCertificatesController;
+use App\Http\Controllers\Admin\Certificates\StoreCertificateController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Articles\ListArticlesController;
 use App\Http\Controllers\Articles\ShowArticleController;
@@ -42,6 +44,8 @@ Route::middleware('auth:web')->group(function () {
 
         Route::prefix('/certificates')->name('certificates.')->group(function () {
             Route::get('/', ListCertificatesController::class)->name('list');
+            Route::get('/create', CreateCertificateController::class)->name('create');
+            Route::post('/', StoreCertificateController::class)->name('store');
         });
     });
 });
