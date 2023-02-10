@@ -7,6 +7,8 @@
                 <a href="{{ route('admin.certificates.edit', ['certificate' => $certificate]) }}">
                     <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Update Certificate</button>
                 </a>
+
+                <button type="button" onclick="confirmDelete()" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Delete Certificate</button>
         </div>
     </div>
     <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
@@ -36,13 +38,28 @@
                 <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $certificate->notes }}</dd>
             </div>
 
-{{--            @if($certificate->file)--}}
+            @if($certificate->hasMedia())
                 <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">Download Cert</dt>
                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0"><a href="{{ route('admin.certificates.download', ['certificate' => $certificate]) }}"><button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Download Certificate</button></a></dd>
                 </div>
-{{--            @endif--}}
+            @endif
 
         </dl>
     </div>
+
+    <form id="delete-certificate-form" action="{{ route('admin.certificates.delete', ['certificate' => $certificate]) }}" method="POST" style="display: none;">
+        @csrf
+        @method('DELETE')
+    </form>
+
+    @push('scripts')
+        <script>
+            function confirmDelete() {
+                if (confirm('Are you sure you want to delete this certificate?')) {
+                    document.getElementById('delete-certificate-form').submit();
+                }
+            }
+        </script>
+    @endpush
 </x-admin-layout>
