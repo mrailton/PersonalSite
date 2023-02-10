@@ -7,6 +7,14 @@ use App\Http\Controllers\Admin\Articles\EditArticleController;
 use App\Http\Controllers\Admin\Articles\ListArticlesController as AdminListArticlesController;
 use App\Http\Controllers\Admin\Articles\StoreArticleController;
 use App\Http\Controllers\Admin\Articles\UpdateArticleController;
+use App\Http\Controllers\Admin\Certificates\CreateCertificateController;
+use App\Http\Controllers\Admin\Certificates\DeleteCertificateController;
+use App\Http\Controllers\Admin\Certificates\DownloadCertificateController;
+use App\Http\Controllers\Admin\Certificates\EditCertificateController;
+use App\Http\Controllers\Admin\Certificates\ListCertificatesController;
+use App\Http\Controllers\Admin\Certificates\ShowCertificateController;
+use App\Http\Controllers\Admin\Certificates\StoreCertificateController;
+use App\Http\Controllers\Admin\Certificates\UpdateCertificateController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Articles\ListArticlesController;
 use App\Http\Controllers\Articles\ShowArticleController;
@@ -37,6 +45,17 @@ Route::middleware('auth:web')->group(function () {
             Route::get('/create', CreateArticleController::class)->name('create');
             Route::put('/{article:slug}', UpdateArticleController::class)->name('update');
             Route::get('/{article:slug}/edit', EditArticleController::class)->name('edit');
+        });
+
+        Route::prefix('/certificates')->name('certificates.')->group(function () {
+            Route::get('/', ListCertificatesController::class)->name('list');
+            Route::get('/create', CreateCertificateController::class)->name('create');
+            Route::post('/', StoreCertificateController::class)->name('store');
+            Route::get('/{certificate:id}', ShowCertificateController::class)->name('show');
+            Route::get('/{certificate:id}/download', DownloadCertificateController::class)->name('download');
+            Route::get('/{certificate:id}/edit', EditCertificateController::class)->name('edit');
+            Route::put('/{certificate:id}', UpdateCertificateController::class)->name('update');
+            Route::delete('/{certificate:id}', DeleteCertificateController::class)->name('delete');
         });
     });
 });
