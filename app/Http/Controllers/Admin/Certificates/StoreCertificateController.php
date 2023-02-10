@@ -21,8 +21,8 @@ class StoreCertificateController extends Controller
             'notes' => $request->validated('notes'),
         ];
 
-        if ($request->validated('image')) {
-            $data['image'] = $request->file('image')->store('certs', ['disk' => 'uploads']);
+        if ($request->validated('file')) {
+            $data['file'] = $request->file('file')->store('certs', ['disk' => 'uploads']);
         }
 
         Certificate::create($data);
