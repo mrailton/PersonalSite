@@ -16,9 +16,10 @@ return new class () extends Migration
             $table->string('issued_by');
             $table->date('issued_on');
             $table->date('expires_on')->nullable();
+            $table->string('image')->nullable();
             $table->text('notes')->nullable();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

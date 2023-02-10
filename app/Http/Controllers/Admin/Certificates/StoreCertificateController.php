@@ -13,13 +13,19 @@ class StoreCertificateController extends Controller
 {
     public function __invoke(StoreCertificateRequest $request): RedirectResponse
     {
-        Certificate::create([
+        $data = [
             'name' => $request->validated('name'),
             'issued_by' => $request->validated('issued_by'),
             'issued_on' => $request->validated('issued_on'),
             'expires_on' => $request->validated('expires_on'),
             'notes' => $request->validated('notes'),
-        ]);
+        ];
+
+        if ($request->validated('image')) {
+            $data['image'] = $request->file('image')->store('certs', ['disk' => 'uploads']);
+        }
+
+        Certificate::create($data);
 
         return redirect()->route('admin.certificates.list');
     }

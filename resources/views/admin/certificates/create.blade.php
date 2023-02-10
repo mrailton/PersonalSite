@@ -1,6 +1,6 @@
 <x-admin-layout title="Create New Article">
     <div class="px-4 sm:px-6 lg:px-8">
-        <form method="POST" action="{{ route('admin.certificates.store') }}">
+        <form method="POST" action="{{ route('admin.certificates.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-6">
@@ -48,6 +48,16 @@
                 </label>
                 @error('expires_on')
                 <div class="text-sm text-red-600">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label class="block">
+                    <span class="text-gray-700">Image:</span>
+                    <input type="file" name="image" class="block w-full @error('image') border-red-500 @enderror mt-1 rounded-md" value="{{old('image')}}" accept=".pdf,.jpeg,.jpg,.png" />
+                </label>
+                @error('image')
+                    <div class="text-sm text-red-600">{{ $message }}</div>
                 @enderror
             </div>
 

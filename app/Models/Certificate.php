@@ -13,7 +13,7 @@ class Certificate extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['name', 'issued_by', 'issued_on', 'expires_on', 'notes'];
+    protected $fillable = ['name', 'issued_by', 'issued_on', 'expires_on', 'image', 'notes'];
 
     protected $casts = [
         'issued_on' => 'date',

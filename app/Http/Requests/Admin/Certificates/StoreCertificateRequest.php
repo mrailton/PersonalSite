@@ -21,6 +21,7 @@ class StoreCertificateRequest extends FormRequest
             'issued_on' => ['required', 'date'],
             'expires_on' => ['nullable', 'date'],
             'notes' => ['nullable', 'string'],
+            'image' => ['file', 'mimes:jpeg,jpg,png,pdf', 'max:20480'],
         ];
     }
 }
