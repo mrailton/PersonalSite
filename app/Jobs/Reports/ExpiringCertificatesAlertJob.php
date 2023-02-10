@@ -35,12 +35,12 @@ class ExpiringCertificatesAlertJob implements ShouldQueue
         }
     }
 
-    private function getExpiringCertificates(): Collection
+    public function getExpiringCertificates(): Collection
     {
         return Certificate::query()->where('expires_on', '<', now()->addMonths(3))->get();
     }
 
-    private function getRecipients(): Collection
+    public function getRecipients(): Collection
     {
         return User::query()->where('receive_reports', '=', 1)->get();
     }
