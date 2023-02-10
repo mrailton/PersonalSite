@@ -12,7 +12,6 @@ class DownloadCertificateController extends Controller
 {
     public function __invoke(Request $request, Certificate $certificate)
     {
-
         return $certificate->getFirstMedia();
     }
 }

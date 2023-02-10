@@ -9,7 +9,6 @@ use Spatie\MediaLibrary\Support\PathGenerator\PathGenerator;
 
 class CertificatesPathGenerator implements PathGenerator
 {
-
     public function getPath(Media $media): string
     {
         return "certificates/{$this->getHash($media)}/";
