@@ -11,21 +11,16 @@ class CertificatesPathGenerator implements PathGenerator
 {
     public function getPath(Media $media): string
     {
-        return "certificates/{$this->getHash($media)}/";
+        return "certificates/{$media->uuid}/";
     }
 
     public function getPathForConversions(Media $media): string
     {
-        return "certificates/{$this->getHash($media)}/conversions/";
+        return "certificates/{$media->uuid}/conversions/";
     }
 
     public function getPathForResponsiveImages(Media $media): string
     {
-        return "certificates/{$this->getHash($media)}/responsive/";
-    }
-
-    private function getHash(Media $media): string
-    {
-        return md5($media->id . config('app.key'));
+        return "certificates/{$media->uuid}/responsive/";
     }
 }
