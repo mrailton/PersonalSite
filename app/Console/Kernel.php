@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('backup:clean')->dailyAt('03:15');
         $schedule->command('backup:run')->dailyAt('03:30');
+        $schedule->command('reports:certificate-expiry')->sundays()->at('09:00');
     }
 
     protected function commands(): void
