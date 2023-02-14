@@ -17,12 +17,12 @@ test('an authenticated user can view the edit article page', function () {
 });
 
 test('an authenticate user can update an article', function () {
-     authenticatedUser();
-     $article = Article::factory()->create();
-     $data = $article->toArray();
-     $data['title'] = 'Updated Title';
+    authenticatedUser();
+    $article = Article::factory()->create();
+    $data = $article->toArray();
+    $data['title'] = 'Updated Title';
 
-     put(route('admin.articles.update', ['article' => $article]), $data)
+    put(route('admin.articles.update', ['article' => $article]), $data)
          ->assertRedirectToRoute('admin.articles.list')
          ->assertSessionDoesntHaveErrors();
 });

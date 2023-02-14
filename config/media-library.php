@@ -69,7 +69,7 @@ return [
      * Here you can specify which path generator should be used for the given class.
      */
     'custom_path_generators' => [
-         \App\Models\Certificate::class => \App\Services\MediaLibrary\CertificatesPathGenerator::class
+        \App\Models\Certificate::class => \App\Services\MediaLibrary\CertificatesPathGenerator::class,
     ],
 
     /*

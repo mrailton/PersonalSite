@@ -16,6 +16,7 @@ class CertificateExpiryReport extends Command
     public function handle(): int
     {
         ExpiringCertificatesAlertJob::dispatch();
+
         return 0;
     }
 }
