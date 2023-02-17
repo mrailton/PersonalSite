@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <link rel="shortcut icon" href="/img/favicon/favicon.ico">
-    <a rel="me" href="https://phpc.social/@markrailton" hidden=""></a>
+    <link rel="me" href="https://phpc.social/@markrailton">
     <title>Mark Railton</title>
 
     @production
