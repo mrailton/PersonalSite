@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\Certificates\ListCertificatesController;
 use App\Http\Controllers\Admin\Certificates\ShowCertificateController;
 use App\Http\Controllers\Admin\Certificates\StoreCertificateController;
 use App\Http\Controllers\Admin\Certificates\UpdateCertificateController;
+use App\Http\Controllers\Admin\Certificates\ViewCertificateFileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Articles\ListArticlesController;
 use App\Http\Controllers\Articles\ShowArticleController;
@@ -53,6 +54,7 @@ Route::middleware('auth:web')->group(function () {
             Route::post('/', StoreCertificateController::class)->name('store');
             Route::get('/{certificate:id}', ShowCertificateController::class)->name('show');
             Route::get('/{certificate:id}/download', DownloadCertificateController::class)->name('download');
+            Route::get('/{certificate:id}/view-certificate', ViewCertificateFileController::class)->name('view-certificate');
             Route::get('/{certificate:id}/edit', EditCertificateController::class)->name('edit');
             Route::put('/{certificate:id}', UpdateCertificateController::class)->name('update');
             Route::delete('/{certificate:id}', DeleteCertificateController::class)->name('delete');
