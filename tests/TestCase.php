@@ -13,7 +13,7 @@ abstract class TestCase extends BaseTestCase
 
     public function authenticate(User $user = null): void
     {
-        if (!$user) {
+        if (! $user) {
             $user = User::factory()->create();
         }
 

@@ -35,7 +35,7 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
                 return true;
             }
 
-            return !auth()->guest();
+            return ! auth()->guest();
         });
     }
 }
