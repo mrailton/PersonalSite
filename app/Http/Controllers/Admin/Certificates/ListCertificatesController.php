@@ -13,7 +13,7 @@ class ListCertificatesController extends Controller
 {
     public function __invoke(Request $request): View
     {
-        $certificates = Certificate::all();
+        $certificates = Certificate::query()->orderByRaw('ISNULL(expires_on), expires_on ASC')->get();
 
         return view('admin.certificates.list', ['certificates' => $certificates]);
     }
