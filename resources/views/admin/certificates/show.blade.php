@@ -42,7 +42,7 @@
                 <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">File</dt>
                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                        <a href="{{ route('admin.certificates.view-certificate', ['certificate' => $certificate]) }}">
+                        <a href="{{ route('admin.certificates.view-certificate', ['certificate' => $certificate]) }}" target="_blank">
                             <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 mx-1 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
                                 View File
                             </button>
