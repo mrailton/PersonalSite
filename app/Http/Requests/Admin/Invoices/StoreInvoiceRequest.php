@@ -20,7 +20,7 @@ class StoreInvoiceRequest extends FormRequest
             'issued_on' => ['required', 'date'],
             'due_on' => ['required', 'date'],
             'items' => ['required', 'array'],
-            'notes' => ['sometimes', 'string'],
+            'notes' => ['nullable', 'string'],
         ];
     }
 }

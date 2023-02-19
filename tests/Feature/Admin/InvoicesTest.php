@@ -9,7 +9,7 @@ test('a user can view a list of invoices', function () {
     authenticatedUser()->get(route('admin.invoices.list'))
         ->assertSee('Create Invoice')
         ->assertSee($invoices[0]->customer->name)
-        ->assertSee('€' . number_format($invoices[1]->amount / 100, 2))
+        ->assertSee('€' . number_format($invoices[1]->amount, 2))
         ->assertSee($invoices[2]->due_on->format('jS M Y'));
 });
 
@@ -22,8 +22,8 @@ test('a user can create a new draft invoice', function () {
         'issued_on' => now()->format('Y-m-d'),
         'due_on' => now()->addDays(7)->format('Y-m-d'),
         'items' => [
-            ['description' => 'Test Item 1', 'quantity' => 1, 'amount' => 10000],
-            ['description' => 'Test Item 2', 'quantity' => 3, 'amount' => 15000],
+            ['description' => 'Test Item 1', 'quantity' => 1, 'amount' => 100],
+            ['description' => 'Test Item 2', 'quantity' => 3, 'amount' => 150],
         ],
     ];
 
@@ -39,6 +39,6 @@ test('a user can create a new draft invoice', function () {
         ->assertSee($customer->name)
         ->assertSee('€' . number_format(550, 2));
 
-    expect(Invoice::first()->amount)->toBe(55000)
+    expect(Invoice::first()->amount)->toBe(number_format(550.00, 2))
         ->and(Invoice::first()->status)->toBe('draft');
 });

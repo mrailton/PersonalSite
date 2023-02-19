@@ -12,9 +12,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('invoice_id')->constrained();
             $table->string('description');
-            $table->integer('amount');
+            $table->decimal('amount');
             $table->integer('quantity');
-            $table->integer('subtotal');
+            $table->decimal('subtotal');
             $table->timestamps();
             $table->softDeletes();
         });

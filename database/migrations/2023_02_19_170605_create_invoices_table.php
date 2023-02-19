@@ -13,8 +13,8 @@ return new class extends Migration
             $table->foreignId('customer_id')->constrained();
             $table->date('issued_on');
             $table->date('due_on');
-            $table->integer('amount')->default(0);
-            $table->integer('balance')->default(0);
+            $table->decimal('amount')->default(0);
+            $table->decimal('balance')->default(0);
             $table->enum('status', ['draft', 'sent', 'overdue', 'paid', 'cancelled']);
             $table->text('notes')->nullable();
             $table->timestamps();
