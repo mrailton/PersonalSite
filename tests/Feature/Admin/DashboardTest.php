@@ -9,6 +9,8 @@ test('an authenticated user can access the dashboard', function () {
 
     $res->assertSee('Dashboard')
         ->assertSee('Articles')
+        ->assertSee('Certificates')
+        ->assertSee('Customers')
         ->assertSee('Logout');
 });
 

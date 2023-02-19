@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\Certificates\ShowCertificateController;
 use App\Http\Controllers\Admin\Certificates\StoreCertificateController;
 use App\Http\Controllers\Admin\Certificates\UpdateCertificateController;
 use App\Http\Controllers\Admin\Certificates\ViewCertificateFileController;
+use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Articles\ListArticlesController;
 use App\Http\Controllers\Articles\ShowArticleController;
@@ -58,6 +59,10 @@ Route::middleware('auth:web')->group(function () {
             Route::get('/{certificate:id}/edit', EditCertificateController::class)->name('edit');
             Route::put('/{certificate:id}', UpdateCertificateController::class)->name('update');
             Route::delete('/{certificate:id}', DeleteCertificateController::class)->name('delete');
+        });
+
+        Route::prefix('/customers')->name('customers.')->group(function () {
+            Route::get('/', [CustomersController::class, 'list'])->name('list');
         });
     });
 });
