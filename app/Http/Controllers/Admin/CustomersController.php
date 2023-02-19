@@ -20,11 +20,6 @@ class CustomersController extends Controller
         return view('admin.customers.list', ['customers' => $customers]);
     }
 
-    public function create(Request $request): View
-    {
-        return view('admin.customers.create');
-    }
-
     public function store(StoreCustomerRequest $request): RedirectResponse
     {
         Customer::query()->create(['name' => $request->validated('name')]);
