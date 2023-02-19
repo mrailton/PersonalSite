@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 use App\Models\Article;
 
 test('an authenticated user can view a list of articles', function () {

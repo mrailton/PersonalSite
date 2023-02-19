@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Customers\StoreCustomerRequest;
-use App\Http\Requests\Admin\Customers\UpdateCustomerRequest;
 use App\Models\Customer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -28,7 +27,7 @@ class CustomersController extends Controller
 
     public function store(StoreCustomerRequest $request): RedirectResponse
     {
-        // TODO: create customer
+        Customer::query()->create(['name' => $request->validated('name')]);
 
         return redirect()->route('admin.customers.list');
     }
@@ -43,9 +42,10 @@ class CustomersController extends Controller
         return view('admin.customers.edit', ['customer' => $customer]);
     }
 
-    public function update(UpdateCustomerRequest $request, Customer $customer): RedirectResponse
+    public function update(StoreCustomerRequest $request, Customer $customer): RedirectResponse
     {
-        // TODO: Update customer
+        $customer->name = $request->validated('name');
+        $customer->save();
 
         return redirect()->route('admin.customers.list');
     }

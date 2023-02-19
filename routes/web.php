@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Admin\ArticlesController as AdminArticlesController;
 use App\Http\Controllers\Admin\CertificatesController;
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CustomersController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +50,9 @@ Route::middleware('auth:web')->group(function () {
             Route::get('/', [CustomersController::class, 'list'])->name('list');
             Route::get('/create', [CustomersController::class, 'create'])->name('create');
             Route::post('/', [CustomersController::class, 'store'])->name('store');
+            Route::get('/{customer:id}', [CustomersController::class, 'show'])->name('show');
+            Route::get('/{customer:id}/edit', [CustomersController::class, 'edit'])->name('edit');
+            Route::put('/{customer:id}', [CustomersController::class, 'update'])->name('update');
         });
     });
 });

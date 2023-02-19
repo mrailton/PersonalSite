@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 use App\Models\Customer;
 
 test('a user can view a list of customers', function () {

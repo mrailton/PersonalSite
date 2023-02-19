@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 use App\Models\Certificate;
 
 test('a user can view a certificate', function () {

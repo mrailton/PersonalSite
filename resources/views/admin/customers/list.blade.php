@@ -32,7 +32,7 @@
                                         €{{ number_format($customer->paid_to_date / 100, 2) }}
                                     </td>
                                     <td class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                                        <a href="#">View</a>
+                                        <a href="{{ route('admin.customers.show', ['customer' => $customer]) }}">View</a>
                                     </td>
                                 </tr>
                             @endforeach

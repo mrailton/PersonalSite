@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 test('an authenticated user can access the dashboard', function () {
     authenticatedUser();
 
