@@ -2,17 +2,23 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Articles;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Article;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use League\CommonMark\CommonMarkConverter;
 
-class ShowArticleController extends Controller
+class ArticlesController extends Controller
 {
-    public function __invoke(Request $request, Article $article): View
+    public function list(Request $request): View
+    {
+        $articles = Article::query()->whereNotNull('published_at')->orderByDesc('published_at')->paginate(10);
+
+        return view('articles.list', ['articles' => $articles]);
+    }
+
+    public function show(Request $request, Article $article): View
     {
         if (is_null($article->published_at) || $article->published_at > now()) {
             abort(404);
