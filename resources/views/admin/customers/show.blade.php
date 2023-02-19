@@ -9,6 +9,10 @@
                     Update Customer
                 </button>
             </a>
+
+            <button type="button" onclick="confirmDelete()" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                Delete Customer
+            </button>
         </div>
     </div>
     <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
@@ -33,5 +37,20 @@
             </div>
         </dl>
     </div>
+
+    <form id="delete-customer-form" action="{{ route('admin.customers.delete', ['customer' => $customer]) }}" method="POST" style="display: none;">
+        @csrf
+        @method('DELETE')
+    </form>
+
+    @push('scripts')
+        <script>
+            function confirmDelete() {
+                if (confirm('Are you sure you want to delete this customer?')) {
+                    document.getElementById('delete-customer-form').submit();
+                }
+            }
+        </script>
+    @endpush
 
 </x-admin-layout>

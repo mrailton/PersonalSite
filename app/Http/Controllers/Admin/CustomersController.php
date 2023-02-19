@@ -49,4 +49,11 @@ class CustomersController extends Controller
 
         return redirect()->route('admin.customers.list');
     }
+
+    public function delete(Request $request, Customer $customer): RedirectResponse
+    {
+        $customer->delete();
+
+        return redirect()->route('admin.customers.list');
+    }
 }

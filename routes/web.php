@@ -53,6 +53,7 @@ Route::middleware('auth:web')->group(function () {
             Route::get('/{customer:id}', [CustomersController::class, 'show'])->name('show');
             Route::get('/{customer:id}/edit', [CustomersController::class, 'edit'])->name('edit');
             Route::put('/{customer:id}', [CustomersController::class, 'update'])->name('update');
+            Route::delete('/{customer:id}', [CustomersController::class, 'delete'])->name('delete');
         });
     });
 });
