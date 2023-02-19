@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Invoices\StoreInvoiceRequest;
+use App\Models\Customer;
 use App\Models\Invoice;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class InvoicesController extends Controller
@@ -16,5 +19,44 @@ class InvoicesController extends Controller
         $invoices = Invoice::with('customer')->get();
 
         return view('admin.invoices.list', ['invoices' => $invoices]);
+    }
+
+    public function create(Request $request): View
+    {
+        $customers = Customer::query()->get();
+
+        return view('admin.invoices.create', ['customers' => $customers]);
+    }
+
+    public function store(StoreInvoiceRequest $request): RedirectResponse
+    {
+        $invoiceAmount = 0;
+        $customer = Customer::query()->with('invoices')->find($request->validated('customer_id'));
+
+        $invoice = $customer->invoices()->create([
+            'issued_on' => $request->validated('issued_on'),
+            'due_on' => $request->validated('due_on'),
+            'status' => 'draft',
+            'notes' => $request->validated('notes'),
+        ]);
+
+        foreach ($request->validated('items') as $item) {
+            $subtotal = $item['amount'] * $item['quantity'];
+
+            $invoice->items()->create([
+                'description' => $item['description'],
+                'amount' => $item['amount'],
+                'quantity' => $item['quantity'],
+                'subtotal' => $subtotal,
+            ]);
+
+            $invoiceAmount += $subtotal;
+        }
+
+        $invoice->amount += $invoiceAmount;
+        $invoice->balance += $invoiceAmount;
+        $invoice->save();
+
+        return redirect()->route('admin.invoices.list');
     }
 }

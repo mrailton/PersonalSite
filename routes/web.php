@@ -59,6 +59,8 @@ Route::middleware('auth:web')->group(function () {
 
         Route::prefix('/invoices')->name('invoices.')->group(function () {
             Route::get('/', [InvoicesController::class, 'list'])->name('list');
+            Route::get('/create', [InvoicesController::class, 'create'])->name('create');
+            Route::post('/', [InvoicesController::class, 'store'])->name('store');
         });
     });
 });
