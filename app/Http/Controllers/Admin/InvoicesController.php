@@ -57,6 +57,9 @@ class InvoicesController extends Controller
         $invoice->balance += $invoiceAmount;
         $invoice->save();
 
+        $customer->balance += $invoiceAmount;
+        $customer->save();
+
         return redirect()->route('admin.invoices.list');
     }
 }

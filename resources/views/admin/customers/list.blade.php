@@ -33,10 +33,10 @@
                                     <td class="whitespace-nowrap border-b border-gray-200 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">
                                         {{ $customer->name }}</td>
                                     <td class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                                        €{{ number_format($customer->balance / 100, 2) }}
+                                        €{{ number_format($customer->balance, 2) }}
                                     </td>
                                     <td class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                                        €{{ number_format($customer->paid_to_date / 100, 2) }}
+                                        €{{ number_format($customer->paid_to_date, 2) }}
                                     </td>
                                     <td class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 sm:table-cell">
                                         <a href="{{ route('admin.customers.show', ['customer' => $customer]) }}">View</a>
