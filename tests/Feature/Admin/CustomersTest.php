@@ -40,10 +40,9 @@ test('a user can view a customer', function () {
 test('a user can update a customer', function() {
     $customer = Customer::factory()->create();
 
-    authenticatedUser()->get(route('admin.customers.edit', ['customer' => $customer]))
+    authenticatedUser()->get(route('admin.customers.show', ['customer' => $customer]))
         ->assertSee($customer->name)
-        ->assertDontSee('€' . number_format($customer->balance / 100, 2))
-        ->assertSee('Submit');
+        ->assertSee('Update Customer');
 
     authenticatedUser()->put(route('admin.customers.update', ['customer' => $customer]), ['name' => 'Updated Customer'])
         ->assertSessionDoesntHaveErrors()

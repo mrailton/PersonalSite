@@ -32,10 +32,6 @@ class CustomersController extends Controller
         return view('admin.customers.show', ['customer' => $customer]);
     }
 
-    public function edit(Request $request, Customer $customer): View
-    {
-        return view('admin.customers.edit', ['customer' => $customer]);
-    }
 
     public function update(StoreCustomerRequest $request, Customer $customer): RedirectResponse
     {
