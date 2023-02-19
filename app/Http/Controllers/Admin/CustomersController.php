@@ -32,7 +32,6 @@ class CustomersController extends Controller
         return view('admin.customers.show', ['customer' => $customer]);
     }
 
-
     public function update(StoreCustomerRequest $request, Customer $customer): RedirectResponse
     {
         $customer->name = $request->validated('name');
