@@ -63,6 +63,8 @@ Route::middleware('auth:web')->group(function () {
 
         Route::prefix('/customers')->name('customers.')->group(function () {
             Route::get('/', [CustomersController::class, 'list'])->name('list');
+            Route::get('/create', [CustomersController::class, 'create'])->name('create');
+            Route::post('/', [CustomersController::class, 'store'])->name('store');
         });
     });
 });
