@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ArticlesController as AdminArticlesController;
 use App\Http\Controllers\Admin\CertificatesController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InvoicesController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,10 @@ Route::middleware('auth:web')->group(function () {
             Route::get('/{customer:id}/edit', [CustomersController::class, 'edit'])->name('edit');
             Route::put('/{customer:id}', [CustomersController::class, 'update'])->name('update');
             Route::delete('/{customer:id}', [CustomersController::class, 'delete'])->name('delete');
+        });
+
+        Route::prefix('/invoices')->name('invoices.')->group(function () {
+            Route::get('/', [InvoicesController::class, 'list'])->name('list');
         });
     });
 });
