@@ -1,10 +1,13 @@
 <x-admin-layout title="Show Customer">
     <div x-data="{
             showEditCustomerModal: false,
-            showDeleteCustomerModal: false
+            showDeleteCustomerModal: false,
+            closeModals() {
+                this.showDeleteCustomerModal = false;
+                this.showEditCustomerModal = false;
+            }
          }"
-         @keydown.escape="showEditCustomerModal = false"
-         @keydown.escape="showDeleteCustomerModal = false"
+         @keydown.escape="closeModals()"
     >
         <div class="sm:flex sm:items-center py-5 px-4 sm:px-6 lg:px-8">
             <div class="sm:flex-auto">
@@ -31,14 +34,14 @@
             <dl class="sm:divide-y sm:divide-gray-200">
                 <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">Balance</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">€{{ number_format($customer->balance / 100, 2) }}</dd>
+                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">€{{ number_format($customer->balance, 2) }}</dd>
                 </div>
             </dl>
 
             <dl class="sm:divide-y sm:divide-gray-200">
                 <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">Paid to Date</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">€{{ number_format($customer->paid_to_date / 100, 2) }}</dd>
+                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">€{{ number_format($customer->paid_to_date, 2) }}</dd>
                 </div>
             </dl>
         </div>

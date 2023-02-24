@@ -13,8 +13,8 @@ return new class () extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('balance')->default(0);
-            $table->integer('paid_to_date')->default(0);
+            $table->decimal('balance')->default(0);
+            $table->decimal('paid_to_date')->default(0);
             $table->timestamps();
         });
     }

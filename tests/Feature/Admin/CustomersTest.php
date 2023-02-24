@@ -23,8 +23,8 @@ test('a user can view a list of customers', function () {
 
     authenticatedUser()->get(route('admin.customers.list'))
         ->assertSee($customers[0]->name)
-        ->assertSee('€' . number_format($customers[1]->balance / 100, 2))
-        ->assertSee('€' . number_format($customers[2]->paid_to_date / 100, 2));
+        ->assertSee('€' . number_format($customers[1]->balance, 2))
+        ->assertSee('€' . number_format($customers[2]->paid_to_date, 2));
 });
 
 test('a user can view a customer', function () {
@@ -32,7 +32,7 @@ test('a user can view a customer', function () {
 
     authenticatedUser()->get(route('admin.customers.show', ['customer' => $customer]))
         ->assertSee($customer->name)
-        ->assertSee('€' . number_format($customer->balance / 100, 2))
+        ->assertSee('€' . number_format($customer->balance, 2))
         ->assertSee('Update Customer')
         ->assertSee('Delete Customer');
 });

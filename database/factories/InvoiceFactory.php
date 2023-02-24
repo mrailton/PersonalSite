@@ -9,7 +9,7 @@ class InvoiceFactory extends Factory
 {
     public function definition(): array
     {
-        $balance = random_int(16000, 50000);
+        $balance = random_int(160, 500);
 
         return [
             'customer_id' => Customer::first()?->id ?: Customer::factory()->create()->id,

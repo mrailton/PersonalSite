@@ -12,8 +12,8 @@ class CustomerFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'balance' => random_int(0, 1000000),
-            'paid_to_date' => random_int(0, 1000000),
+            'balance' => random_int(0, 10000),
+            'paid_to_date' => random_int(0, 10000),
         ];
     }
 }
