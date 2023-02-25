@@ -57,7 +57,7 @@ return [
      * If you'd like to automatically use the Git commit hash as the version, set this to:
      *   'version' => trim(exec('git log --pretty="%h" -n1 HEAD')).
      */
-    'version' => env('APP_VERSION'),
+    'version' => trim(exec('git log --pretty="%h" -n1 HEAD')),
 
     /**
      * The hostname of the machine the app is running on.
@@ -91,7 +91,7 @@ return [
     /**
      * Enable reporting deprecation warnings.
      */
-    'capture_deprecations' => false,
+    'capture_deprecations' => true,
 
     /**
      * Exception classes that should not be reported to Honeybadger.
