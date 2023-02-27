@@ -59,6 +59,9 @@ Route::middleware('auth:web')->group(function () {
             Route::get('/', [InvoicesController::class, 'list'])->name('list');
             Route::get('/create', [InvoicesController::class, 'create'])->name('create');
             Route::post('/', [InvoicesController::class, 'store'])->name('store');
+            Route::get('/{invoice:id}', [InvoicesController::class, 'show'])->name('show');
+            Route::post('/{invoice:id}/mark-sent', [InvoicesController::class, 'markSent'])->name('mark-sent');
+            Route::post('/{invoice:id}/payment', [InvoicesController::class, 'addPayment'])->name('add-payment');
         });
     });
 });

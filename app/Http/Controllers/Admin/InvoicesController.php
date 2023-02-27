@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\InvoiceStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Invoices\StoreInvoiceRequest;
+use App\Http\Requests\Admin\Invoices\StorePaymentRequest;
 use App\Models\Customer;
 use App\Models\Invoice;
 use Illuminate\Contracts\View\View;
@@ -62,5 +63,33 @@ class InvoicesController extends Controller
         $customer->save();
 
         return redirect()->route('admin.invoices.list');
+    }
+
+    public function show(Request $request, Invoice $invoice): View
+    {
+        return view('admin.invoices.show', ['invoice' => $invoice]);
+    }
+
+    public function markSent(Request $request, Invoice $invoice): RedirectResponse
+    {
+        $invoice->update(['status' => InvoiceStatus::Sent]);
+
+        return redirect()->route('admin.invoices.show', ['invoice' => $invoice]);
+    }
+
+    public function addPayment(StorePaymentRequest $request, Invoice $invoice): RedirectResponse
+    {
+        $payment = $invoice->payments()->create([
+            'amount' => $request->validated('amount'),
+            'paid_on' => $request->validated('paid_on'),
+            'notes' => $request->validated('notes'),
+        ]);
+
+        $invoice->update([
+            'status' => InvoiceStatus::Paid,
+            'balance' => $invoice->balance - $payment->amount,
+        ]);
+
+        return redirect()->route('admin.invoices.show', ['invoice' => $invoice]);
     }
 }

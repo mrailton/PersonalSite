@@ -49,7 +49,7 @@
                                         {{ $invoice->status }}
                                     </td>
                                     <td class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                                        <a href="">View</a>
+                                        <a href="{{ route('admin.invoices.show', ['invoice' => $invoice]) }}">View</a>
                                     </td>
                                 </tr>
                             @endforeach

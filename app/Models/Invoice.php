@@ -21,7 +21,7 @@ class Invoice extends Model
     protected $casts = [
         'issued_on' => 'date',
         'due_on' => 'date',
-        'status' => InvoiceStatus::class
+        'status' => InvoiceStatus::class,
     ];
 
     public function customer(): BelongsTo
@@ -32,5 +32,10 @@ class Invoice extends Model
     public function items(): HasMany
     {
         return $this->hasMany(InvoiceItem::class, 'invoice_id', 'id');
+    }
+
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class, 'invoice_id', 'id');
     }
 }
