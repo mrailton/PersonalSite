@@ -11,7 +11,7 @@
         }"
         @keydown.escape="closeModals()"
     >
-        <div class="flex flex-col items-center px-8 pt-20 text-lg text-center bg-white border-t-8 border-indigo-700 md:block lg:block xl:block print:block md:items-start lg:items-start xl:items-start print:items-start md:text-left lg:text-left xl:text-left print:text-left print:pt-8 print:px-2 md:relative lg:relative xl:relative print:relative">
+        <div class="flex flex-col items-center px-8 pt-20 text-lg text-center bg-white md:block lg:block xl:block print:block md:items-start lg:items-start xl:items-start print:items-start md:text-left lg:text-left xl:text-left print:text-left print:pt-8 print:px-2 md:relative lg:relative xl:relative print:relative">
             <div class="flex flex-row mt-12 mb-2 ml-0 text-2xl font-bold md:text-3xl lg:text-4xl xl:text-4xl print:text-2xl lg:ml-12 xl:ml-12">INVOICE
                 <div class="text-green-700">
                     <span class="mr-4 text-sm">■ </span> #
