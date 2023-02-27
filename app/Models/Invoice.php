@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\InvoiceStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,6 +21,7 @@ class Invoice extends Model
     protected $casts = [
         'issued_on' => 'date',
         'due_on' => 'date',
+        'status' => InvoiceStatus::class
     ];
 
     public function customer(): BelongsTo

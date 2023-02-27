@@ -46,7 +46,7 @@
                                         €{{ number_format($invoice->balance, 2) }}
                                     </td>
                                     <td class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                                        {{ ucfirst($invoice->status) }}
+                                        {{ $invoice->status }}
                                     </td>
                                     <td class="whitespace-nowrap border-b border-gray-200 px-3 py-4 text-sm text-gray-500 sm:table-cell">
                                         <a href="">View</a>

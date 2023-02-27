@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\InvoiceStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Invoices\StoreInvoiceRequest;
 use App\Models\Customer;
@@ -36,7 +37,7 @@ class InvoicesController extends Controller
         $invoice = $customer->invoices()->create([
             'issued_on' => $request->validated('issued_on'),
             'due_on' => $request->validated('due_on'),
-            'status' => 'draft',
+            'status' => InvoiceStatus::Draft,
             'notes' => $request->validated('notes'),
         ]);
 

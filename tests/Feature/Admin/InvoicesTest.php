@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\InvoiceStatus;
 use App\Models\Customer;
 use App\Models\Invoice;
 
@@ -40,5 +41,5 @@ test('a user can create a new draft invoice', function () {
         ->assertSee('€' . number_format(550, 2));
 
     expect(Invoice::first()->amount)->toBe(number_format(550.00, 2))
-        ->and(Invoice::first()->status)->toBe('draft');
+        ->and(Invoice::first()->status)->toBe(InvoiceStatus::Draft);
 });

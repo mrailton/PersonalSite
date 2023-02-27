@@ -15,7 +15,7 @@ return new class extends Migration
             $table->date('due_on');
             $table->decimal('amount')->default(0);
             $table->decimal('balance')->default(0);
-            $table->enum('status', ['draft', 'sent', 'overdue', 'paid', 'cancelled']);
+            $table->string('status')->default('draft');
             $table->text('notes')->nullable();
             $table->timestamps();
             $table->softDeletes();

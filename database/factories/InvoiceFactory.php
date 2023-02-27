@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\InvoiceStatus;
 use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,7 +18,7 @@ class InvoiceFactory extends Factory
             'due_on' => now()->addDays(7),
             'amount' => $balance,
             'balance' => $balance,
-            'status' => 'sent',
+            'status' => InvoiceStatus::Sent,
         ];
     }
 }
