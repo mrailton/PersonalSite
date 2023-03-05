@@ -191,7 +191,7 @@
 
                         <div class="mb-6">
                             <label for="paid_on" class="block text-sm text-gray-700">Date</label>
-                            <input id="paid_on" name="paid_on" type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" value="{{ now()->format('Y-m-d') }}">
+                            <input id="paid_on" name="paid_on" type="date" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" value="{{ $invoice->due_on->format('Y-m-d') }}">
                         </div>
 
                         <div class="mb-6">
