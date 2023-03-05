@@ -18,7 +18,7 @@ class InvoicesController extends Controller
 {
     public function list(Request $request): View
     {
-        $invoices = Invoice::with('customer')->orderByDesc('issued_on')->paginate(5);
+        $invoices = Invoice::with('customer')->orderByDesc('issued_on')->paginate(10);
 
         return view('admin.invoices.list', ['invoices' => $invoices]);
     }
