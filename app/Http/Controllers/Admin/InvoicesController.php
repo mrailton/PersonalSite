@@ -95,6 +95,6 @@ class InvoicesController extends Controller
             'paid_to_date' => $invoice->customer->paid_to_date + $payment->amount,
         ]);
 
-        return redirect()->route('admin.invoices.show', ['invoice' => $invoice]);
+        return redirect()->route('admin.invoices.list');
     }
 }

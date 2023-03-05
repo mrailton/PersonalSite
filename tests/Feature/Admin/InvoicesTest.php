@@ -64,7 +64,7 @@ test('a user can add a payment to an invoice', function () {
 
     authenticatedUser()->post(route('admin.invoices.add-payment', ['invoice' => $invoice]), ['amount' => '186.00', 'paid_on' => now()->format('Y-m-d')])
         ->assertSessionDoesntHaveErrors()
-        ->assertRedirectToRoute('admin.invoices.show', ['invoice' => $invoice]);
+        ->assertRedirectToRoute('admin.invoices.list');
 
     $invoice->refresh();
 
