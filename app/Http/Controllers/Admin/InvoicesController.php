@@ -62,7 +62,7 @@ class InvoicesController extends Controller
         $customer->balance += $invoiceAmount;
         $customer->save();
 
-        return redirect()->route('admin.invoices.list');
+        return redirect()->route('admin.invoices.show', ['invoice' => $invoice]);
     }
 
     public function show(Request $request, Invoice $invoice): View

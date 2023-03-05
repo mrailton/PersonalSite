@@ -33,9 +33,10 @@ test('a user can create a new draft invoice', function () {
         ->assertSee('Create Invoice')
         ->assertSee('Submit');
 
-    authenticatedUser()->post(route('admin.invoices.store'), $data)
-        ->assertSessionDoesntHaveErrors()
-        ->assertRedirectToRoute('admin.invoices.list');
+    $res = authenticatedUser()->post(route('admin.invoices.store'), $data)
+        ->assertSessionDoesntHaveErrors();
+
+    $res->assertRedirectToRoute('admin.invoices.show', ['invoice' => Invoice::first()]);
 
     authenticatedUser()->get(route('admin.invoices.list'))
         ->assertSee($customer->name)
@@ -49,7 +50,7 @@ test('a user can mark a draft invoice as sent', function () {
     $invoice = Invoice::factory()->create(['status' => InvoiceStatus::Draft]);
 
     authenticatedUser()->get(route('admin.invoices.show', ['invoice' => $invoice]))
-        ->assertSee(InvoiceStatus::Draft);
+        ->assertSee(InvoiceStatus::Draft->value);
 
     authenticatedUser()->post(route('admin.invoices.mark-sent', ['invoice' => $invoice]))
         ->assertSessionDoesntHaveErrors()
