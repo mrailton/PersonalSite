@@ -56,6 +56,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="flex items-center justify-center mt-6">
+                        {{ $invoices->links('pagination.articles') }}
+                    </div>
                 </div>
             </div>
         </div>
