@@ -20,7 +20,7 @@
             </div>
             <div class="flex flex-col lg:ml-12 xl:ml-12 print:text-sm">
                 <span>Issue date: {{ $invoice->issued_on->format('d/m/Y') }}</span>
-                <span>Paid date: Not Paid</span>
+                <span>Paid date: @if($invoice->status === \App\Enums\InvoiceStatus::Paid) {{ $invoice->payment->paid_on->format('d/m/Y') }} @else Not Paid @endif</span>
                 <span>Due date: {{ $invoice->due_on->format('d/m/Y') }}</span>
             </div>
             @switch($invoice->status)
@@ -42,10 +42,10 @@
                     @break
             @endswitch
 
-
-            <contract class="flex flex-col m-12 text-center lg:m-12 md:flex-none md:text-left md:relative md:m-0 md:mt-16 lg:flex-none lg:text-left lg:relative xl:flex-none xl:text-left xl:relative print:flex-none print:text-left print:relative print:m-0 print:mt-6 print:text-sm">
+            <div class="flex flex-col m-12 text-center lg:m-12 md:flex-none md:text-left md:relative md:m-0 md:mt-16 lg:flex-none lg:text-left lg:relative xl:flex-none xl:text-left xl:relative print:flex-none print:text-left print:relative print:m-0 print:mt-6 print:text-sm">
                 <span class="font-extrabold md:hidden lg:hidden xl:hidden print:hidden">FROM</span>
-                <from class="flex flex-col">
+
+                <div class="flex flex-col">
                     <span class="font-medium">Mark Railton Consulting</span>
                     <div class="flex-row">
                         <span>13 Woodpark</span>,
@@ -57,26 +57,29 @@
                     </div>
                     <span>+353 (0) 83 122 1562</span>
                     <span>marksrailton@gmail.com</span>
-                </from>
+                </div>
+
                 <span class="mt-12 font-extrabold md:hidden lg:hidden xl:hidden print:hidden">TO</span>
-                <to class="flex flex-col md:absolute md:right-0 md:text-right lg:absolute lg:right-0 lg:text-right print:absolute print:right-0 print:text-right">
+
+                <div class="flex flex-col md:absolute md:right-0 md:text-right lg:absolute lg:right-0 lg:text-right print:absolute print:right-0 print:text-right">
                     <span class="font-medium">{{ $invoice->customer->name }}</span>
-                </to>
-            </contract>
+                </div>
+            </div>
         </div>
+
         <hr class="border-gray-300 md:mt-8 print:hidden">
-        <content>
-            <div id="content" class="flex justify-center md:p-8 lg:p-20 xl:p-20 print:p-2">
-                <table class="w-full text-left table-auto print:text-sm" id="table-items">
-                    <thead>
-                    <tr class="text-white bg-gray-700 print:bg-gray-300 print:text-black">
-                        <th class="px-4 py-2">Item</th>
-                        <th class="px-4 py-2 text-right">Qty</th>
-                        <th class="px-4 py-2 text-right">Unit Price</th>
-                        <th class="px-4 py-2 text-right">Subtotal</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+
+        <div id="content" class="flex justify-center md:p-8 lg:p-20 xl:p-20 print:p-2">
+            <table class="w-full text-left table-auto print:text-sm" id="table-items">
+                <thead>
+                <tr class="text-white bg-gray-700 print:bg-gray-300 print:text-black">
+                    <th class="px-4 py-2">Item</th>
+                    <th class="px-4 py-2 text-right">Qty</th>
+                    <th class="px-4 py-2 text-right">Unit Price</th>
+                    <th class="px-4 py-2 text-right">Subtotal</th>
+                </tr>
+                </thead>
+                <tbody>
                     @foreach($invoice->items as $item)
                         <tr>
                             <td class="px-4 py-2 border">{{ $item->description }}</td>
@@ -86,22 +89,21 @@
                         </tr>
                     @endforeach
 
-                    <tr class="text-white bg-gray-700 print:bg-gray-300 print:text-black" >
+                    <tr class="text-white bg-gray-700 print:bg-gray-300 print:text-black">
                         <td class="invisible"></td>
                         <td class="invisible"></td>
                         <td class="px-4 py-2 font-extrabold text-right border">Total</td>
                         <td class="px-4 py-2 text-right border tabular-nums slashed-zero">€{{ $invoice->amount }}</td>
                     </tr>
-                    </tbody>
-                </table>
-            </div>
-        </content>
+                </tbody>
+            </table>
+        </div>
 
-        <footer class="flex flex-col items-center justify-center pb-20 leading-loose text-white bg-gray-700 print:bg-white print:pb-0">
+        <div class="flex flex-col items-center justify-center pb-20 leading-loose text-white bg-gray-700 print:bg-white print:pb-0">
             <span class="mt-4 text-xs print:mt-0">Invoice generated on {{ $invoice->created_at->format('d/m/Y H:i:s') }}</span>
             <span class="mt-4 text-base print:text-xs">© {{ now()->format('Y') }} Mark Railton Consulting.  All rights reserved.</span>
             <span class="print:text-xs">13 Woodpark, Rathdrum, Wicklow, A67 FF66</span>
-        </footer>
+        </div>
 
         <div x-show="showMarkInvoiceSentModal" class="fixed inset-0 z-50 overflow-y-auto" role="dialog">
             <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">

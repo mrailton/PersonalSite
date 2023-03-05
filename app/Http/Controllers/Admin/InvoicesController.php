@@ -79,7 +79,7 @@ class InvoicesController extends Controller
 
     public function addPayment(StorePaymentRequest $request, Invoice $invoice): RedirectResponse
     {
-        $payment = $invoice->payments()->create([
+        $payment = $invoice->payment()->create([
             'amount' => $request->validated('amount'),
             'paid_on' => $request->validated('paid_on'),
             'notes' => $request->validated('notes'),
