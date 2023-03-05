@@ -90,6 +90,11 @@ class InvoicesController extends Controller
             'balance' => $invoice->balance - $payment->amount,
         ]);
 
+        $invoice->customer->update([
+            'balance' => $invoice->customer->balance - $payment->amount,
+            'paid_to_date' => $invoice->customer->paid_to_date + $payment->amount,
+        ]);
+
         return redirect()->route('admin.invoices.show', ['invoice' => $invoice]);
     }
 }
