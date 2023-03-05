@@ -49,7 +49,7 @@ function authenticatedUser(): TestCase
     return test()->actingAs($user);
 }
 
-function guest(): HigherOrderTapProxy
+function guest()
 {
     return test();
 }

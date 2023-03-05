@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Admin\ArticlesController as AdminArticlesController;
 use App\Http\Controllers\Admin\CertificatesController;
+use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InvoicesController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +45,23 @@ Route::middleware('auth:web')->group(function () {
             Route::get('/{certificate:id}/edit', [CertificatesController::class, 'edit'])->name('edit');
             Route::put('/{certificate:id}', [CertificatesController::class, 'update'])->name('update');
             Route::delete('/{certificate:id}', [CertificatesController::class, 'delete'])->name('delete');
+        });
+
+        Route::prefix('/customers')->name('customers.')->group(function () {
+            Route::get('/', [CustomersController::class, 'list'])->name('list');
+            Route::post('/', [CustomersController::class, 'store'])->name('store');
+            Route::get('/{customer:id}', [CustomersController::class, 'show'])->name('show');
+            Route::put('/{customer:id}', [CustomersController::class, 'update'])->name('update');
+            Route::delete('/{customer:id}', [CustomersController::class, 'delete'])->name('delete');
+        });
+
+        Route::prefix('/invoices')->name('invoices.')->group(function () {
+            Route::get('/', [InvoicesController::class, 'list'])->name('list');
+            Route::get('/create', [InvoicesController::class, 'create'])->name('create');
+            Route::post('/', [InvoicesController::class, 'store'])->name('store');
+            Route::get('/{invoice:id}', [InvoicesController::class, 'show'])->name('show');
+            Route::post('/{invoice:id}/mark-sent', [InvoicesController::class, 'markSent'])->name('mark-sent');
+            Route::post('/{invoice:id}/payment', [InvoicesController::class, 'addPayment'])->name('add-payment');
         });
     });
 });
