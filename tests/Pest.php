@@ -38,13 +38,7 @@ expect()->extend('toBeOne', function () {
 
 function authenticatedUser(): TestCase
 {
-    $data = [
-        'name' => 'Test User',
-        'email' => 'test@user.com',
-        'password' => 'password',
-    ];
-
-    $user = User::first() ?: User::create($data);
+    $user = user();
 
     return test()->actingAs($user);
 }
@@ -52,4 +46,15 @@ function authenticatedUser(): TestCase
 function guest()
 {
     return test();
+}
+
+function user(): User
+{
+    $data = [
+        'name' => 'Test User',
+        'email' => 'test@user.com',
+        'password' => 'password',
+    ];
+
+    return User::first() ?: User::create($data);
 }
