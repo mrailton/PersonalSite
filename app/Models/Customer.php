@@ -14,7 +14,7 @@ class Customer extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['name', 'balance', 'paid_to_date'];
+    protected $fillable = ['name', 'hourly_rate', 'balance', 'paid_to_date'];
 
     public function invoices(): HasMany
     {

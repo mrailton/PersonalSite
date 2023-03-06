@@ -27,7 +27,13 @@ class InvoicesController extends Controller
     {
         $customers = Customer::query()->get();
 
-        return view('admin.invoices.create', ['customers' => $customers]);
+        $hourlyRates = [];
+
+        foreach ($customers as $customer) {
+            $hourlyRates[$customer->id] = $customer->hourly_rate;
+        }
+
+        return view('admin.invoices.create', ['customers' => $customers , 'hourlyRates' => $hourlyRates]);
     }
 
     public function store(StoreInvoiceRequest $request): RedirectResponse

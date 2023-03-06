@@ -33,6 +33,13 @@
 
             <dl class="sm:divide-y sm:divide-gray-200">
                 <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Hourly Rate</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">€{{ $customer->hourly_rate }}</dd>
+                </div>
+            </dl>
+
+            <dl class="sm:divide-y sm:divide-gray-200">
+                <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">Balance</dt>
                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">€{{ number_format($customer->balance, 2) }}</dd>
                 </div>
@@ -84,6 +91,11 @@
                         <div class="mb-6">
                             <label for="name" class="block text-sm text-gray-700">Name</label>
                             <input id="name" name="name" type="text" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" value="{{ $customer->name }}">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="hourly_rate" class="block text-sm text-gray-700">Hourly Rate</label>
+                            <input id="hourly_rate" name="hourly_rate" type="number" class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40" value="{{ $customer->hourly_rate }}">
                         </div>
 
                         <div class="flex justify-end mt-6">

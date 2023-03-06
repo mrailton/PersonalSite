@@ -17,6 +17,7 @@ class StoreCustomerRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
+            'hourly_rate' => ['nullable', 'decimal:2'],
         ];
     }
 }

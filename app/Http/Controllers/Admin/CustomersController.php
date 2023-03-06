@@ -22,7 +22,7 @@ class CustomersController extends Controller
 
     public function store(StoreCustomerRequest $request): RedirectResponse
     {
-        Customer::query()->create(['name' => $request->validated('name')]);
+        Customer::query()->create($request->validated());
 
         return redirect()->route('admin.customers.list');
     }
@@ -35,6 +35,7 @@ class CustomersController extends Controller
     public function update(StoreCustomerRequest $request, Customer $customer): RedirectResponse
     {
         $customer->name = $request->validated('name');
+        $customer->hourly_rate = $request->validated('hourly_rate');
         $customer->save();
 
         return redirect()->route('admin.customers.list');
