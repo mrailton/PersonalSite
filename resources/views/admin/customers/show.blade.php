@@ -53,7 +53,7 @@
             </dl>
         </div>
 
-        <div x-show="showEditCustomerModal" class="fixed inset-0 z-50 overflow-y-auto" role="dialog">
+        <div x-cloak x-show="showEditCustomerModal" class="fixed inset-0 z-50 overflow-y-auto" role="dialog">
             <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
                 <div x-cloak @click="showEditCustomerModal = false" x-show="showEditCustomerModal"
                      x-transition:enter="transition ease-out duration-300 transform"
@@ -112,7 +112,7 @@
             </div>
         </div>
 
-        <div x-show="showDeleteCustomerModal" class="fixed inset-0 z-50 overflow-y-auto" role="dialog">
+        <div x-cloak x-show="showDeleteCustomerModal" class="fixed inset-0 z-50 overflow-y-auto" role="dialog">
             <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
                 <div x-cloak @click="showDeleteCustomerModal = false" x-show="showDeleteCustomerModal"
                      x-transition:enter="transition ease-out duration-300 transform"
