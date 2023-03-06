@@ -10,6 +10,7 @@ use App\Models\Note;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use League\CommonMark\CommonMarkConverter;
 
 class NotesController extends Controller
 {
@@ -29,7 +30,9 @@ class NotesController extends Controller
 
     public function show(Request $request, Note $note): View
     {
-        return view('admin.notes.show', ['note' => $note]);
+        $html = (new CommonMarkConverter())->convert($note->content);
+
+        return view('admin.notes.show', ['note' => $note, 'html' => $html]);
     }
 
     public function update(StoreNoteRequest $request, Note $note): RedirectResponse
