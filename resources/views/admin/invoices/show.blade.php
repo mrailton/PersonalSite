@@ -47,16 +47,10 @@
 
                 <div class="flex flex-col">
                     <span class="font-medium">Mark Railton Consulting</span>
-                    <div class="flex-row">
-                        <span>13 Woodpark</span>,
-                        <span>Rathdrum</span>
-                    </div>
-                    <div class="flex-row">
-                        <span>Wicklow</span>,
-                        <span>A67 FF66</span>
-                    </div>
-                    <span>+353 (0) 83 122 1562</span>
-                    <span>marksrailton@gmail.com</span>
+                    <span>13 Woodpark</span>
+                    <span>Rathdrum</span>
+                    <span>Wicklow</span>
+                    <span>A67 FF66</span>
                 </div>
 
                 <span class="mt-12 font-extrabold md:hidden lg:hidden xl:hidden print:hidden">TO</span>
