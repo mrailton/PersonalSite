@@ -51,7 +51,7 @@
                 <label class="block">
                     <span class="text-gray-700">Customer:</span>
                     <select type="text" x-model="customer" @change="setHourlyRate()" name="customer_id" id="customer_id" class="block @error('customer_id') border-red-500 @enderror w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm">
-                        <option disabled selected>Select A Customer</option>
+                        <option disabled selected value="">Select A Customer</option>
                         @foreach($customers as $customer)
                             <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                         @endforeach
