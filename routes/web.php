@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CertificatesController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InvoicesController;
+use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +63,14 @@ Route::middleware('auth:web')->group(function () {
             Route::get('/{invoice:id}', [InvoicesController::class, 'show'])->name('show');
             Route::post('/{invoice:id}/mark-sent', [InvoicesController::class, 'markSent'])->name('mark-sent');
             Route::post('/{invoice:id}/payment', [InvoicesController::class, 'addPayment'])->name('add-payment');
+        });
+
+        Route::prefix('/notes')->name('notes.')->group(function () {
+            Route::get('/', [NotesController::class, 'list'])->name('list');
+            Route::post('/', [NotesController::class, 'store'])->name('store');
+            Route::get('/{note:id}', [NotesController::class, 'show'])->name('show');
+            Route::put('/{note:id}', [NotesController::class, 'update'])->name('update');
+            Route::delete('/{note:id}', [NotesController::class, 'delete'])->name('delete');
         });
     });
 });

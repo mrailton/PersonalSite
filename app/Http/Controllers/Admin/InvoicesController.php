@@ -33,7 +33,7 @@ class InvoicesController extends Controller
             $hourlyRates[$customer->id] = $customer->hourly_rate;
         }
 
-        return view('admin.invoices.create', ['customers' => $customers , 'hourlyRates' => $hourlyRates]);
+        return view('admin.invoices.create', ['customers' => $customers, 'hourlyRates' => $hourlyRates]);
     }
 
     public function store(StoreInvoiceRequest $request): RedirectResponse

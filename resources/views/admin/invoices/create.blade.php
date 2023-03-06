@@ -143,7 +143,7 @@
 
         </form>
 
-        <div x-show="addItemModalOpen" class="fixed inset-0 z-50 overflow-y-auto" role="dialog">
+        <div x-cloak x-show="addItemModalOpen" class="fixed inset-0 z-50 overflow-y-auto" role="dialog">
             <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
                 <div x-cloak @click="addItemModalOpen = false" x-show="addItemModalOpen"
                      x-transition:enter="transition ease-out duration-300 transform"

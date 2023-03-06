@@ -99,7 +99,7 @@
             <span class="print:text-xs">13 Woodpark, Rathdrum, Wicklow, A67 FF66</span>
         </div>
 
-        <div x-show="showMarkInvoiceSentModal" class="fixed inset-0 z-50 overflow-y-auto" role="dialog">
+        <div x-cloak x-show="showMarkInvoiceSentModal" class="fixed inset-0 z-50 overflow-y-auto" role="dialog">
             <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
                 <div x-cloak @click="showMarkInvoiceSentModal = false" x-show="showMarkInvoiceSentModal"
                      x-transition:enter="transition ease-out duration-300 transform"
@@ -149,7 +149,7 @@
             </div>
         </div>
 
-        <div x-show="showAddPaymentModal" class="fixed inset-0 z-50 overflow-y-auto" role="dialog">
+        <div x-cloak x-show="showAddPaymentModal" class="fixed inset-0 z-50 overflow-y-auto" role="dialog">
             <div class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
                 <div x-cloak @click="showAddPaymentModal = false" x-show="showAddPaymentModal"
                      x-transition:enter="transition ease-out duration-300 transform"
