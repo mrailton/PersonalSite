@@ -45,7 +45,8 @@ test('a user can view a certificate', function () {
         ->assertSee($certificate->name)
         ->assertSee($certificate->issued_by)
         ->assertSee($certificate->issued_on->format('jS M Y'))
-        ->assertSee($certificate->expires_on->format('jS M Y'));
+        ->assertSee($certificate->expires_on->format('jS M Y'))
+        ->assertSee($certificate->certificate_number);
 });
 
 test('a user can update a certificate', function () {

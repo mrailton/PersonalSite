@@ -20,6 +20,7 @@ class StoreCertificateRequest extends FormRequest
             'issued_by' => ['required', 'string', 'max:255'],
             'issued_on' => ['required', 'date'],
             'expires_on' => ['nullable', 'date'],
+            'certificate_number' => ['nullable', 'string'],
             'notes' => ['nullable', 'string'],
             'file' => ['file', 'mimes:jpeg,jpg,png,pdf', 'max:20480'],
         ];
