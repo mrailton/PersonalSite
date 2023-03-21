@@ -16,7 +16,7 @@ class Certificate extends Model implements HasMedia
     use SoftDeletes;
     use InteractsWithMedia;
 
-    protected $fillable = ['name', 'issued_by', 'issued_on', 'expires_on', 'notes'];
+    protected $fillable = ['name', 'issued_by', 'issued_on', 'expires_on', 'certificate_number', 'notes'];
 
     protected $casts = [
         'issued_on' => 'date',

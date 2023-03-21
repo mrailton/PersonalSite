@@ -32,6 +32,7 @@ class CertificatesController extends Controller
             'issued_by' => $request->validated('issued_by'),
             'issued_on' => $request->validated('issued_on'),
             'expires_on' => $request->validated('expires_on'),
+            'certificate_number' => $request->validated('certificate_number'),
             'notes' => $request->validated('notes'),
         ]);
 
@@ -58,6 +59,7 @@ class CertificatesController extends Controller
         $certificate->issued_by = $request->validated('issued_by');
         $certificate->issued_on = $request->validated('issued_on');
         $certificate->expires_on = $request->validated('expires_on');
+        $certificate->certificate_number = $request->validated('certificate_number');
         $certificate->notes = $request->validated('notes');
         $certificate->save();
 

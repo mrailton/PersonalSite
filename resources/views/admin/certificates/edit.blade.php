@@ -54,6 +54,18 @@
 
             <div class="mb-6">
                 <label class="block">
+                    <span class="text-gray-700">Certificate Number:</span>
+                    <input type="text" name="certificate_number"
+                           class="block w-full @error('certificate_number') border-red-500 @enderror mt-1 rounded-md"
+                           placeholder="" value="{{ $certificate->certificate_number }}" />
+                </label>
+                @error('certificate_number')
+                    <div class="text-sm text-red-600">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label class="block">
                     <span class="text-gray-700">Notes:</span>
                     <textarea class="block w-full mt-1 rounded-md" name="notes"
                               rows="3">{{ $certificate->notes }}</textarea>

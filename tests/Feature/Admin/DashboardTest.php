@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 test('an authenticated user can access the dashboard', function () {
     authenticatedUser();
 
@@ -9,6 +7,9 @@ test('an authenticated user can access the dashboard', function () {
 
     $res->assertSee('Dashboard')
         ->assertSee('Articles')
+        ->assertSee('Certificates')
+        ->assertSee('Customers')
+        ->assertSee('Invoices')
         ->assertSee('Logout');
 });
 

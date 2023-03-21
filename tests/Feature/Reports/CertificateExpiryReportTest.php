@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 use App\Jobs\Reports\ExpiringCertificatesAlertJob;
 use App\Mail\CertificateExpiringMail;
 use App\Models\Certificate;

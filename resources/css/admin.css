@@ -14,5 +14,9 @@
     font-family: 'JetBrains Mono', monospace;
 }
 
+[x-cloak] {
+    display: none;
+}
+
 @tailwind components;
 @tailwind utilities;

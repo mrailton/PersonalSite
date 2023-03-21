@@ -38,18 +38,23 @@ expect()->extend('toBeOne', function () {
 
 function authenticatedUser(): TestCase
 {
+    $user = user();
+
+    return test()->actingAs($user);
+}
+
+function guest()
+{
+    return test();
+}
+
+function user(): User
+{
     $data = [
         'name' => 'Test User',
         'email' => 'test@user.com',
         'password' => 'password',
     ];
 
-    $user = User::first() ?: User::create($data);
-
-    return test()->actingAs($user);
-}
-
-function guest(): HigherOrderTapProxy
-{
-    return test();
+    return User::first() ?: User::create($data);
 }
