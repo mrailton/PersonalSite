@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Api\V1\Auth;
+namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\StoreLoginRequest;
+use App\Http\Requests\Api\Auth\StoreLoginRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
-class LoginController extends Controller
+class AuthenticateController extends Controller
 {
     public function __invoke(StoreLoginRequest $request): JsonResponse
     {
@@ -24,10 +24,9 @@ class LoginController extends Controller
         }
 
         $device = substr($request->userAgent() ?? '', 0, 255);
-        $expiresAt = $request->remember ? null : now()->addMinutes(config('session.lifetime'));
 
         return response()->json([
-            'access_token' => $user->createToken($device, expiresAt: $expiresAt)->plainTextToken,
+            'access_token' => $user->createToken($device)->plainTextToken,
         ], 201);
     }
 }

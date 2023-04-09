@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Requests\Admin\Certificates;
+namespace App\Http\Requests\Api\Admin\Certificates;
 
 use Illuminate\Foundation\Http\FormRequest;
 

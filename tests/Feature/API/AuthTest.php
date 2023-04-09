@@ -5,7 +5,7 @@ use App\Models\User;
 test('user can authenticate with correct credentials', function () {
     $user = User::factory()->create();
 
-    $response = $this->postJson('/api/v1/auth/login', [
+    $response = $this->postJson(route('authenticate'), [
         'email' => $user->email,
         'password' => 'password'
     ]);
@@ -17,7 +17,7 @@ test('user can authenticate with correct credentials', function () {
 test('user can not authenticate with incorrect credentials', function () {
     $user = User::factory()->create();
 
-    $response = $this->postJson('/api/v1/auth/login', [
+    $response = $this->postJson(route('authenticate'), [
         'email' => $user->email,
         'password' => 'wrong-password'
     ]);

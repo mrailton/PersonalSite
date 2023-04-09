@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Requests\Admin\Invoices;
+namespace App\Http\Requests\Api\Admin\Invoices;
 
 use Illuminate\Foundation\Http\FormRequest;
 

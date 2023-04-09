@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Requests\Admin\Notes;
+namespace App\Http\Requests\Api\Admin\Customers;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreNoteRequest extends FormRequest
+class StoreCustomerRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,8 +16,8 @@ class StoreNoteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string'],
-            'content' => ['required', 'string'],
+            'name' => ['required', 'string'],
+            'hourly_rate' => ['nullable', 'decimal:2'],
         ];
     }
 }

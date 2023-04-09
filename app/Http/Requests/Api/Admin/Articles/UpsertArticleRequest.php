@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Requests\Admin\Articles;
+namespace App\Http\Requests\Api\Admin\Articles;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;

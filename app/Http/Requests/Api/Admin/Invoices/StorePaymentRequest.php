@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Requests\Admin\Customers;
+namespace App\Http\Requests\Api\Admin\Invoices;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCustomerRequest extends FormRequest
+class StorePaymentRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,8 +16,9 @@ class StoreCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string'],
-            'hourly_rate' => ['nullable', 'decimal:2'],
+            'amount' => ['required', 'decimal:2'],
+            'paid_on' => ['required', 'date'],
+            'notes' => ['nullable', 'string'],
         ];
     }
 }
