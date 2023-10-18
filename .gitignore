@@ -17,3 +17,4 @@ _ide_helper_models.php
 _ide_helper.php
 .php-cs-fixer.cache
 .DS_Store
+.idea
