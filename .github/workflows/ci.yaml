@@ -68,3 +68,5 @@ jobs:
 
       - name: Deploy
         uses: deployphp/action@v1
+        with:
+          dep: deploy
