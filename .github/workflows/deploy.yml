@@ -13,4 +13,4 @@ jobs:
           port: ${{secrets.PORT}}
           username: ${{secrets.USERNAME}}
           key: ${{secrets.PRIVATE_KEY}}
-          script:  "cd www; git pull origin main"
+          script:  "cd www; php artisan down; git pull origin main; npm ci; npm run build; npm prune; composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev; php artisan migrate --force; php artisan route:cache; php artisan view:clear; sudo -S service php8.2-fpm reload; php artisan up; php artisan honeybadger:deploy"
