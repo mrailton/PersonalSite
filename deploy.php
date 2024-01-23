@@ -11,7 +11,7 @@ set('repository', 'git@github.com:mrailton/personalsite.git');
 set('php_fpm_version', '8.2');
 
 host(getenv('HOST'))
-    ->set('remote_user', 'personalsite')
+    ->set('remote_user', getenv('USER'))
     ->set('deploy_path', '~/www');
 
 task('deploy', [
