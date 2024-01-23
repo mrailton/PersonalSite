@@ -25,6 +25,7 @@ task('deploy', [
     'npm:run:build',
     'deploy:publish',
     'artisan:queue:restart',
+    'artisan:honeybadger:deploy',
 ]);
 
 task('npm:run:build', function () {
