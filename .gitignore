@@ -20,3 +20,4 @@ _ide_helper.php
 .php-cs-fixer.cache
 .DS_Store
 .idea
+test-results

@@ -30,13 +30,4 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-
-    'slack' => [
-        'webhook_url' => env('SLACK_WEBHOOK_URL'),
-    ],
-
-    'horizon' => [
-        'token' => env('HORIZON_TOKEN'),
-    ],
-
 ];
