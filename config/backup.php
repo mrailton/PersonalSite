@@ -151,9 +151,12 @@ return [
     'notifications' => [
 
         'notifications' => [
-            \Spatie\Backup\Notifications\Notifications\BackupHasFailedNotification::class => ['email'],
-            \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFoundNotification::class => ['email'],
-            \Spatie\Backup\Notifications\Notifications\CleanupHasFailedNotification::class => ['email'],
+            Spatie\Backup\Notifications\Notifications\BackupHasFailedNotification::class => ['mail'],
+            Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFoundNotification::class => ['mail'],
+            Spatie\Backup\Notifications\Notifications\CleanupHasFailedNotification::class => ['mail'],
+            Spatie\Backup\Notifications\Notifications\BackupWasSuccessfulNotification::class => [],
+            Spatie\Backup\Notifications\Notifications\HealthyBackupWasFoundNotification::class => [],
+            Spatie\Backup\Notifications\Notifications\CleanupWasSuccessfulNotification::class => [],
         ],
 
         /*
