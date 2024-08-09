@@ -18,8 +18,11 @@ class Certificate extends Model implements HasMedia
 
     protected $fillable = ['name', 'issued_by', 'issued_on', 'expires_on', 'certificate_number', 'notes'];
 
-    protected $casts = [
-        'issued_on' => 'date',
-        'expires_on' => 'date',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'issued_on' => 'date',
+            'expires_on' => 'date',
+        ];
+    }
 }

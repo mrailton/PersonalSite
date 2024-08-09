@@ -14,10 +14,6 @@ class Article extends Model
 
     protected $fillable = ['title', 'content', 'published_at'];
 
-    protected $casts = [
-        'published_at' => 'datetime',
-    ];
-
     public static function boot(): void
     {
         parent::boot();
@@ -29,5 +25,12 @@ class Article extends Model
 
             $article->slug = $count ? "{$slug}-{$count}" : $slug;
         });
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'published_at' => 'datetime',
+        ];
     }
 }
