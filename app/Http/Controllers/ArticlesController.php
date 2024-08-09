@@ -24,7 +24,7 @@ class ArticlesController extends Controller
             abort(404);
         }
 
-        $html = (new CommonMarkConverter())->convert($article->content);
+        $html = (new CommonMarkConverter)->convert($article->content);
 
         return view('articles.show', ['article' => $article, 'html' => $html]);
     }

@@ -22,9 +22,7 @@ class ExpiringCertificatesAlertJob implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     public function handle(): void
     {

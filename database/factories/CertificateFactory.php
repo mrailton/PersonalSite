@@ -15,7 +15,7 @@ class CertificateFactory extends Factory
             'issued_by' => $this->faker->company(),
             'issued_on' => $this->faker->dateTimeBetween('-2 years', 'now'),
             'expires_on' => $this->faker->dateTimeBetween('now', '+2 years'),
-            'certificate_number' => 'GG' . $this->faker->numberBetween(20000, 90000),
+            'certificate_number' => 'GG'.$this->faker->numberBetween(20000, 90000),
         ];
     }
 }

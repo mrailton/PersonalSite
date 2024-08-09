@@ -10,9 +10,7 @@ use Illuminate\View\Component;
 
 class InvoiceStatus extends Component
 {
-    public function __construct(public string $colour, public InvoiceStatusEnum $status)
-    {
-    }
+    public function __construct(public string $colour, public InvoiceStatusEnum $status) {}
 
     public function render(): View
     {

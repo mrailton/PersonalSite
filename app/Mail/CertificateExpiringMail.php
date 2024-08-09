@@ -15,9 +15,7 @@ class CertificateExpiringMail extends Mailable implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    public function __construct(private readonly Collection $certificates)
-    {
-    }
+    public function __construct(private readonly Collection $certificates) {}
 
     public function build(): CertificateExpiringMail
     {

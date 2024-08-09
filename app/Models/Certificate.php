@@ -13,8 +13,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Certificate extends Model implements HasMedia
 {
     use HasFactory;
-    use SoftDeletes;
     use InteractsWithMedia;
+    use SoftDeletes;
 
     protected $fillable = ['name', 'issued_by', 'issued_on', 'expires_on', 'certificate_number', 'notes'];
 

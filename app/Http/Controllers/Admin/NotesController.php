@@ -30,7 +30,7 @@ class NotesController extends Controller
 
     public function show(Request $request, Note $note): View
     {
-        $html = (new CommonMarkConverter())->convert($note->content);
+        $html = (new CommonMarkConverter)->convert($note->content);
 
         return view('admin.notes.show', ['note' => $note, 'html' => $html]);
     }
