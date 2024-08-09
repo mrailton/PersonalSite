@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Notes\StoreNoteRequest;
 use App\Models\Note;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use League\CommonMark\CommonMarkConverter;
+use Illuminate\Routing\Controller;
 
 class NotesController extends Controller
 {
