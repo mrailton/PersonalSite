@@ -8,10 +8,9 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication;
     use LazilyRefreshDatabase;
 
-    public function authenticate(User $user = null): void
+    public function authenticate(?User $user = null): void
     {
         if (! $user) {
             $user = User::factory()->create();

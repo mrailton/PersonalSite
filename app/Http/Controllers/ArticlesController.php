@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use League\CommonMark\CommonMarkConverter;
 
 class ArticlesController extends Controller

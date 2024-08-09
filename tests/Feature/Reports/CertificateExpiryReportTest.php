@@ -4,6 +4,7 @@ use App\Jobs\Reports\ExpiringCertificatesAlertJob;
 use App\Mail\CertificateExpiringMail;
 use App\Models\Certificate;
 use App\Models\User;
+
 use function Pest\Laravel\artisan;
 
 test('sends the certificate expiry report to users that want to receive it', function () {
@@ -19,7 +20,7 @@ test('sends the certificate expiry report to users that want to receive it', fun
 
 test('email content renders properly if there are certificates expiring in the next 3 months', function () {
     Certificate::factory()->create(['expires_on' => now()]);
-    $certificates = (new ExpiringCertificatesAlertJob())->getExpiringCertificates();
+    $certificates = (new ExpiringCertificatesAlertJob)->getExpiringCertificates();
 
     (new CertificateExpiringMail($certificates))->assertSeeInHtml($certificates[0]->name);
 });

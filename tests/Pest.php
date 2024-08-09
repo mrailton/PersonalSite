@@ -2,12 +2,11 @@
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
-use Pest\Support\HigherOrderTapProxy;
 use Tests\TestCase;
 
 uses(
     TestCase::class,
-     LazilyRefreshDatabase::class,
+    LazilyRefreshDatabase::class,
 )->in('Feature');
 
 /*

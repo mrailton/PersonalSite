@@ -75,4 +75,3 @@ test('a user can delete a certificate', function () {
 
     $this->assertSoftDeleted($certificate);
 });
-
