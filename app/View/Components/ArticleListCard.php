@@ -10,7 +10,9 @@ use Illuminate\View\Component;
 
 class ArticleListCard extends Component
 {
-    public function __construct(public Article $article) {}
+    public function __construct(public Article $article)
+    {
+    }
 
     public function render(): View
     {
