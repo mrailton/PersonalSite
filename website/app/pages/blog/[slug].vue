@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const config = useRuntimeConfig()
+const { apiUrl } = useApi()
 const route = useRoute()
 const slug = route.params.slug as string
 
@@ -10,7 +10,7 @@ interface Article {
 }
 
 const { data: article } = await useAsyncData<Article>('article', () =>
-    $fetch(`${config.public.apiUrl}/articles/${slug}`)
+    $fetch(`${apiUrl}/articles/${slug}`)
 )
 </script>
 

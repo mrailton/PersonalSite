@@ -33,7 +33,8 @@ services:
     environment:
       - NODE_ENV=development
       - NUXT_TELEMETRY_DISABLED=1
-      - API_URL=http://localhost:8000
+      - API_URL=http://api:8000
+      - PUBLIC_API_URL=http://localhost:8000
     depends_on:
       - api
     networks:
@@ -55,7 +56,7 @@ services:
     environment:
       - NODE_ENV=development
       - NUXT_TELEMETRY_DISABLED=1
-      - API_URL=http://localhost:8000
+      - API_URL=http://api:8000
     networks:
       - app-network
     depends_on:

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const config = useRuntimeConfig()
+const { apiUrl } = useApi()
 
 const { data, pending, error } = await useAsyncData('articles', () =>
-  $fetch(`${config.public.apiUrl}/articles`)
+  $fetch(`${apiUrl}/articles`)
 )
 </script>
 
