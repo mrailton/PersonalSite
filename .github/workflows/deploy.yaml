@@ -1,7 +1,6 @@
 name: Manual Deploy
 on:
-  repository_dispatch:
-    types: [manual-deploy]
+  workflow_dispatch:
 
 jobs:
   deploy-api:
