@@ -18,11 +18,18 @@ const items = computed<NavigationMenuItem[]>(() => [
 </script>
 
 <template>
-  <UHeader title="Mark Railton">
-
+  <UHeader title="Mark Railton" mode="drawer">
     <template #right>
-      <UNavigationMenu :items="items" />
-      <UColorModeButton/>
+      <UNavigationMenu :items="items" class="hidden lg:flex" />
+      <UColorModeButton />
+    </template>
+
+    <template #body>
+      <UNavigationMenu
+        :items="items"
+        orientation="vertical"
+        class="-mx-2.5"
+      />
     </template>
   </UHeader>
 </template>
