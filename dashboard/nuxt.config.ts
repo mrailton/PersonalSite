@@ -15,8 +15,9 @@ export default defineNuxtConfig({
         },
     },
     runtimeConfig: {
+        apiUrl: process.env.API_URL || 'https://api.markrailton.com',
         public: {
-            apiUrl: process.env.API_URL || 'https://api.markrailton.com'
+            apiUrl: process.env.PUBLIC_API_URL || 'https://api.markrailton.com'
         }
     },
     app: {

@@ -20,7 +20,8 @@ interface FetchError {
 
 export const useApi = () => {
     const config = useRuntimeConfig()
-    const baseUrl = config.public.apiUrl
+    // Use server-side URL for SSR, client-side URL for hydration/navigation
+    const baseUrl = import.meta.server ? config.apiUrl : config.public.apiUrl
 
     const getAuthHeaders = (): Record<string, string> => {
         const token = useCookie('auth-token')
