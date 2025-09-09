@@ -1,0 +1,30 @@
+{
+  "name": "nuxt-app",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "start": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^1.9.0",
+    "@nuxt/image": "^1.11.0",
+    "@nuxt/ui-pro": "^3.3.2",
+    "@nuxtjs/mdc": "^0.17.2",
+    "@vueuse/core": "^13.8.0",
+    "eslint": "^9.34.0",
+    "markdown-it": "^14.1.0",
+    "nuxt": "^4.0.3",
+    "shiki": "^3.12.0",
+    "typescript": "^5.9.2",
+    "vue": "^3.5.20",
+    "vue-router": "^4.5.1"
+  }
+}

@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "@nuxt/ui-pro";
+
+.markdown-body pre {
+    @apply rounded-lg p-4 overflow-x-auto;
+}
+.markdown-body pre code {
+    @apply font-mono text-sm;
+}

@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+__pycache__/
+
+# Build outputs
+.output/
+.nuxt/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output/
+
+# Pytest
+.pytest_cache/
+.coverage
+
+# Database
+*.db
+*.sqlite
+
+# Temporary files
+tmp/
+temp/
