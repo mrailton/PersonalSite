@@ -5,30 +5,25 @@ on:
 jobs:
   deploy-api:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Wait 10 seconds
-        run: sleep 10
       - name: Deploy API to Coolify
         run: | 
           curl --request GET '${{ secrets.API_COOLIFY_WEBHOOK_URL }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
 
-  deploy-website:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Wait 10 seconds
-        run: sleep 10
-      - name: Deploy Website to Coolify
-        run: | 
-          curl --request GET '${{ secrets.WEBSITE_COOLIFY_WEBHOOK_URL }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
-
   deploy-dashboard:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Wait 10 seconds
-        run: sleep 10
+      - name: Wait 60 seconds
+        run: sleep 60
       - name: Deploy Dashboard to Coolify
         run: | 
           curl --request GET '${{ secrets.DASHBOARD_COOLIFY_WEBHOOK_URL }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
+
+  deploy-website:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait 60 seconds
+        run: sleep 60
+      - name: Deploy Website to Coolify
+        run: | 
+          curl --request GET '${{ secrets.WEBSITE_COOLIFY_WEBHOOK_URL }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
