@@ -169,6 +169,21 @@ class TestGetAuthenticatedUser:
         assert response.status_code == 401
         assert "Could not validate credentials" in response.json()["detail"]
 
+    def test_no_credentials_with_required_auth(self, test_db):
+        from app.services.auth import get_authenticated_user
+        from fastapi import HTTPException
+        
+        auth_dependency = get_authenticated_user(required=True)
+        auth_func = auth_dependency.dependency
+        
+        with pytest.raises(HTTPException) as exc_info:
+            res = auth_func(credentials=None, db=test_db)
+
+        assert exc_info.value.status_code == 401
+        assert exc_info.value.detail == "Could not validate credentials"
+        assert exc_info.value.headers == {"WWW-Authenticate": "Bearer"}
+
+
 
 class TestAuthHelpers:
 
