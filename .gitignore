@@ -1,0 +1,23 @@
+# Dependencies
+/vendor/
+
+# Configuration
+.env
+.env.local
+.env.*.local
+
+# IDE - PhpStorm
+.idea/
+*.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php
+
+# Logs and Caches
+/logs/
+/cache/
+/tmp/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
