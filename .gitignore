@@ -21,3 +21,7 @@ _ide_helper_models.php
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# Testing
+.phpunit.cache/
+coverage/
