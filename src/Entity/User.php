@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use DateTime;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -14,18 +16,27 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
 #[Entity, Table(name: 'users', uniqueConstraints: [new UniqueConstraint(name: 'email_unique', columns: ['email'])])]
 class User
 {
-    #[Id, Column(type: 'integer'), GeneratedValue(strategy: 'AUTO')]
+    #[Id]
+    #[GeneratedValue]
+    #[Column(name: 'id', type: Types::INTEGER)]
     private int $id;
 
-    #[Column(type: 'string', length: 255, nullable: false)]
+    #[Column(name: 'name', type: Types::STRING, length: 255, nullable: false)]
     private string $name;
 
-    #[Column(type: 'string', length: 255, nullable: false)]
+    #[Column(name: 'email', type: Types::STRING, length: 255, nullable: false)]
     private string $email;
 
-    #[Column(type: 'string', length: 255, nullable: false)]
+    #[Column(name: 'password', type: Types::STRING, length: 255, nullable: false)]
     private string $password;
 
+    #[Column(name: 'created_at', type: Types::DATETIME_MUTABLE, nullable: false)]
+    private DateTime $createdAt;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTime();
+    }
 
     public function getId(): int
     {
@@ -61,6 +72,11 @@ class User
         $this->password = password_hash($password, PASSWORD_DEFAULT);
 
         return $this;
+    }
+
+    public function getCreatedAt(): DateTime
+    {
+        return $this->createdAt;
     }
 
     public function checkPassword(string $attempt): bool

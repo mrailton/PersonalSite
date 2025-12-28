@@ -1,0 +1,10 @@
+parameters:
+    level: 9
+    paths:
+        - src
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        - identifier: property.onlyRead
+    
+includes:
+    - vendor/phpstan/phpstan-doctrine/extension.neon

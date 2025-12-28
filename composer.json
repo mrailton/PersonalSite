@@ -25,5 +25,9 @@
         "symfony/cache": "^8.0",
         "doctrine/migrations": "^3.9",
         "symfony/var-exporter": "^7.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-doctrine": "^2.0"
     }
 }
