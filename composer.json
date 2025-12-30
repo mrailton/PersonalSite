@@ -33,7 +33,7 @@
     },
     "require-dev": {
         "phpstan/phpstan": "^2.1",
-        "phpstan/phpstan-doctrine": "^2.7",
+        "phpstan/phpstan-doctrine": "^2.0",
         "phpunit/phpunit": "^12.5"
     },
     "scripts": {
