@@ -5,13 +5,11 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
-class IndexController
+class IndexController extends BaseController
 {
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function __invoke(): ResponseInterface
     {
-        $response->getBody()->write("Hello, World!");
-        return $response;
+        return $this->render('index.twig', []);
     }
 }

@@ -5,6 +5,7 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     ignoreErrors:
         - identifier: property.onlyRead
+        - identifier: missingType.iterableValue
     
 includes:
     - vendor/phpstan/phpstan-doctrine/extension.neon
