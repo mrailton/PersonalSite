@@ -67,7 +67,8 @@ $cli->addCommands([
 ]);
 
 // Add your custom commands here
-// Example:
-// $cli->add(new App\Console\YourCustomCommand());
+$cli->addCommands([
+    new App\Console\CreateUserCommand($entityManager),
+]);
 
 $cli->run();
