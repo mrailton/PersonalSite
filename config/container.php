@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Helpers\ViteHelper;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,6 +13,7 @@ use Psr\Http\Message\ResponseInterface;
 use Slim\Psr7\Response;
 
 use App\Controllers\IndexController;
+use Twig\TwigFunction;
 
 return [
     ResponseInterface::class => \DI\get(Response::class),
@@ -26,7 +28,17 @@ return [
 
     Twig::class => function (ContainerInterface $c) {
         $settings = $c->get('settings');
-        return Twig::create($settings['templates_path'], ['cache' => false]);
+        $twig = Twig::create($settings['templates_path'], ['cache' => false]);
+
+        $isDev = $settings['app_env'] === 'development';
+        $viteHelper = new ViteHelper($isDev);
+
+        $environment = $twig->getEnvironment();
+        $environment->addFunction(new TwigFunction('vite', function ($entry) use ($viteHelper) {
+            return $viteHelper->renderTags($entry);
+        }, ['is_safe' => ['html']]));
+
+        return $twig;
     },
 
     EntityManagerInterface::class => function (ContainerInterface $c) {

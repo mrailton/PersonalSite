@@ -1,0 +1,35 @@
+{
+  "name": "personalsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrailton/PersonalSite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mrailton/PersonalSite/issues"
+  },
+  "homepage": "https://github.com/mrailton/PersonalSite#readme",
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "alpinejs": "^3.15.3",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "tailwindcss": "next",
+    "vite": "^7.3.0",
+    "vite-plugin-symfony": "^8.2.3"
+  }
+}

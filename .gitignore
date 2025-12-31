@@ -1,5 +1,9 @@
 # Dependencies
 /vendor/
+/node_modules/
+
+# Build artifacts
+/public/build/
 
 # Configuration
 .env
