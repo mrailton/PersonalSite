@@ -1,2 +1,157 @@
 @import "tailwindcss";
 @source "../templates/**/*.{twig,html}";
+
+/* Alpine.js cloak - hide elements before Alpine loads */
+[x-cloak] {
+    display: none !important;
+}
+
+/* Catppuccin Frappe Theme Colors */
+:root {
+    --ctp-frappe-rosewater: #f2d5cf;
+    --ctp-frappe-flamingo: #eebebe;
+    --ctp-frappe-pink: #f4b8e4;
+    --ctp-frappe-mauve: #ca9ee6;
+    --ctp-frappe-red: #e78284;
+    --ctp-frappe-maroon: #ea999c;
+    --ctp-frappe-peach: #ef9f76;
+    --ctp-frappe-yellow: #e5c890;
+    --ctp-frappe-green: #a6d189;
+    --ctp-frappe-teal: #81c8be;
+    --ctp-frappe-sky: #99d1db;
+    --ctp-frappe-sapphire: #85c1dc;
+    --ctp-frappe-blue: #8caaee;
+    --ctp-frappe-lavender: #babbf1;
+    --ctp-frappe-text: #c6d0f5;
+    --ctp-frappe-subtext1: #b5bfe2;
+    --ctp-frappe-subtext0: #a5adce;
+    --ctp-frappe-overlay2: #949cbb;
+    --ctp-frappe-overlay1: #838ba7;
+    --ctp-frappe-overlay0: #737994;
+    --ctp-frappe-surface2: #626880;
+    --ctp-frappe-surface1: #51576d;
+    --ctp-frappe-surface0: #414559;
+    --ctp-frappe-base: #303446;
+    --ctp-frappe-mantle: #292c3c;
+    --ctp-frappe-crust: #232634;
+}
+
+/* Custom component styles */
+@layer components {
+    .btn {
+        @apply inline-block px-4 py-2 rounded-lg font-semibold transition-colors;
+    }
+
+    .btn-primary {
+        @apply inline-block px-4 py-2 rounded-lg font-semibold transition-colors;
+        background-color: var(--ctp-frappe-blue);
+        color: var(--ctp-frappe-base);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--ctp-frappe-sapphire);
+    }
+
+    .btn-secondary {
+        @apply inline-block px-4 py-2 rounded-lg font-semibold transition-colors;
+        background-color: var(--ctp-frappe-surface0);
+        color: var(--ctp-frappe-text);
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--ctp-frappe-surface1);
+    }
+
+    .btn-danger {
+        @apply inline-block px-4 py-2 rounded-lg font-semibold transition-colors;
+        background-color: var(--ctp-frappe-red);
+        color: var(--ctp-frappe-base);
+    }
+
+    .btn-danger:hover {
+        background-color: var(--ctp-frappe-maroon);
+    }
+
+    .card {
+        @apply rounded-lg shadow-md p-6;
+        background-color: var(--ctp-frappe-surface0);
+        color: var(--ctp-frappe-text);
+    }
+
+    .prose {
+        @apply max-w-none;
+        color: var(--ctp-frappe-text);
+        line-height: 1.75;
+    }
+
+    .prose h1, .prose h2, .prose h3, .prose h4 {
+        color: var(--ctp-frappe-lavender);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .prose h1 {
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .prose h2 {
+        margin-top: 2.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .prose p {
+        margin-bottom: 1.25rem;
+    }
+
+    .prose ul, .prose ol {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+    }
+
+    .prose li {
+        margin-bottom: 0.5rem;
+    }
+
+    .prose a {
+        color: var(--ctp-frappe-blue);
+    }
+
+    .prose a:hover {
+        color: var(--ctp-frappe-sapphire);
+    }
+
+    .prose blockquote {
+        border-left: 4px solid var(--ctp-frappe-blue);
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: var(--ctp-frappe-overlay2);
+    }
+
+    /* Inline code styling */
+    .prose :not(pre) > code {
+        background-color: var(--ctp-frappe-mantle);
+        color: var(--ctp-frappe-peach);
+        @apply px-1 py-0.5 rounded text-sm;
+    }
+
+    /* Code blocks container */
+    .prose pre {
+        background-color: var(--ctp-frappe-mantle);
+        margin: 2rem 0 3rem 0;
+        @apply p-4 rounded-lg overflow-x-auto;
+    }
+
+    /* Let Prism.js handle code block styling - minimal overrides */
+    .prose pre code {
+        background-color: transparent;
+        padding: 0;
+    }
+}
+
+/* Base styling */
+body {
+    background-color: var(--ctp-frappe-base);
+    color: var(--ctp-frappe-text);
+}

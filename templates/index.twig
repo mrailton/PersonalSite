@@ -1,5 +1,49 @@
 {% extends 'layout.twig' %}
 
 {% block content %}
-    Hello, World!
+    <section class="mb-16 text-center">
+        <h1 class="text-5xl font-extrabold text-[var(--ctp-frappe-lavender)] mb-4">HI, I'M MARK</h1>
+        <p class="text-xl text-[var(--ctp-frappe-text)] max-w-2xl mx-auto">
+            I'm a seasoned software engineer with a passion for building robust and scalable web applications.
+        </p>
+    </section>
+
+    <section class="mb-16">
+        <h2 class="text-4xl font-bold text-[var(--ctp-frappe-lavender)] mb-8 text-center">About Me</h2>
+        <div class="card">
+            <p class="text-[var(--ctp-frappe-text)] mb-4">
+                With over a decade of experience, I specialize in crafting efficient and maintainable solutions using a diverse set of technologies. My expertise spans across back-end development with PHP and Python, and front-end development with JavaScript frameworks like Vue.js.
+            </p>
+            <p class="text-[var(--ctp-frappe-text)] mb-4">
+                I thrive in environments where I can tackle complex challenges and contribute to all phases of the software development lifecycle, from conception to deployment. I am particularly adept at designing RESTful APIs.
+            </p>
+            <p class="text-[var(--ctp-frappe-text)]">
+                This personal site is built using Slim Framework, Tailwind CSS, and Alpine.js, showcasing my approach to modern web development.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="text-4xl font-bold text-[var(--ctp-frappe-lavender)] mb-8 text-center">Recent Articles</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card">
+                <h3 class="text-2xl font-bold text-[var(--ctp-frappe-lavender)] mb-2">My First Article</h3>
+                <p class="text-[var(--ctp-frappe-subtext0)] text-sm mb-4">Published: 2024-01-01</p>
+                <a href="#" class="text-[var(--ctp-frappe-blue)] hover:text-[var(--ctp-frappe-sapphire)]">Read More &rarr;</a>
+            </div>
+            <div class="card">
+                <h3 class="text-2xl font-bold text-[var(--ctp-frappe-lavender)] mb-2">Another Great Post</h3>
+                <p class="text-[var(--ctp-frappe-subtext0)] text-sm mb-4">Published: 2024-02-15</p>
+                <a href="#" class="text-[var(--ctp-frappe-blue)] hover:text-[var(--ctp-frappe-sapphire)]">Read More &rarr;</a>
+            </div>
+            <div class="card">
+                <h3 class="text-2xl font-bold text-[var(--ctp-frappe-lavender)] mb-2">Web Development Trends</h3>
+                <p class="text-[var(--ctp-frappe-subtext0)] text-sm mb-4">Published: 2024-03-10</p>
+                <a href="#" class="text-[var(--ctp-frappe-blue)] hover:text-[var(--ctp-frappe-sapphire)]">Read More &rarr;</a>
+            </div>
+        </div>
+        <div class="text-center mt-12">
+            <a href="/blog" class="btn btn-primary text-xl px-8 py-4">View All Articles</a>
+        </div>
+    </section>
 {% endblock %}

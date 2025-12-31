@@ -5,11 +5,48 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Mark Railton</title>
 
     {{ vite('assets/js/app.js') }}
 </head>
-<body>
-    <div id="content" class="">{% block content %}{% endblock %}</div>
+<body class="font-sans leading-normal tracking-normal">
+
+    <header class="bg-[var(--ctp-frappe-mantle)] shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold text-[var(--ctp-frappe-text)] hover:text-[var(--ctp-frappe-lavender)]">Mark Railton</a>
+            
+            <div class="md:hidden" x-data="{ open: false }">
+                <button @click="open = !open" class="text-[var(--ctp-frappe-text)] focus:outline-none focus:text-[var(--ctp-frappe-lavender)]">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <div x-show="open" @click.away="open = false" class="absolute inset-x-0 top-16 bg-[var(--ctp-frappe-mantle)] shadow-lg rounded-md p-4 space-y-2 z-50">
+                    <a href="/" class="block text-[var(--ctp-frappe-text)] hover:text-[var(--ctp-frappe-lavender)]">Home</a>
+                    <a href="/blog" class="block text-[var(--ctp-frappe-text)] hover:text-[var(--ctp-frappe-lavender)]">Blog</a>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex">
+                <a href="/" class="text-[var(--ctp-frappe-text)] hover:text-[var(--ctp-frappe-lavender)] mx-2">Home</a>
+                <a href="/blog" class="text-[var(--ctp-frappe-text)] hover:text-[var(--ctp-frappe-lavender)] mx-2">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 px-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-[var(--ctp-frappe-crust)] text-[var(--ctp-frappe-subtext0)] py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; {{ "now"|date("Y") }} Mark Railton. All rights reserved.</p>
+            <nav class="mt-2">
+                <a href="/" class="text-[var(--ctp-frappe-subtext0)] hover:text-[var(--ctp-frappe-lavender)] mx-2">Home</a>
+                <a href="/blog" class="text-[var(--ctp-frappe-subtext0)] hover:text-[var(--ctp-frappe-lavender)] mx-2">Blog</a>
+            </nav>
+        </div>
+    </footer>
+
 </body>
 </html>

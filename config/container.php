@@ -31,7 +31,8 @@ return [
         $twig = Twig::create($settings['templates_path'], ['cache' => false]);
 
         $isDev = $settings['app_env'] === 'development';
-        $viteHelper = new ViteHelper($isDev);
+        $useViteDevServer = $settings['debug'];
+        $viteHelper = new ViteHelper($isDev, 'http://localhost:5173', $useViteDevServer);
 
         $environment = $twig->getEnvironment();
         $environment->addFunction(new TwigFunction('vite', function ($entry) use ($viteHelper) {
