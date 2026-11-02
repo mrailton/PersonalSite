@@ -19,37 +19,43 @@ $resolvePath = static function (string $path) use ($rootDir): string {
     return $rootDir . '/' . ltrim($path, '/\\');
 };
 
+$env = static function (string $name, mixed $default = null): mixed {
+    $value = $_ENV[$name] ?? $_SERVER[$name] ?? getenv($name);
+
+    return $value === false || $value === null ? $default : $value;
+};
+
 return [
     'settings' => [
         'app' => [
-            'name' => $_ENV['APP_NAME'] ?? 'Slim Starter',
-            'env' => $_ENV['APP_ENV'] ?? 'development',
-            'debug' => filter_var($_ENV['APP_DEBUG'] ?? true, FILTER_VALIDATE_BOOLEAN),
+            'name' => $env('APP_NAME', 'Slim Starter'),
+            'env' => $env('APP_ENV', 'development'),
+            'debug' => filter_var($env('APP_DEBUG', true), FILTER_VALIDATE_BOOLEAN),
         ],
 
         'twig' => [
             'path' => $rootDir . '/resources/views',
             'options' => [
-                'cache' => ($_ENV['TWIG_CACHE'] ?? false) === 'true' ? $rootDir . '/var/cache/twig' : false,
-                'debug' => filter_var($_ENV['APP_DEBUG'] ?? true, FILTER_VALIDATE_BOOLEAN),
+                'cache' => $env('TWIG_CACHE', false) === 'true' ? $rootDir . '/var/cache/twig' : false,
+                'debug' => filter_var($env('APP_DEBUG', true), FILTER_VALIDATE_BOOLEAN),
                 'auto_reload' => true,
             ],
         ],
 
         'doctrine' => [
-            'dev_mode' => filter_var($_ENV['APP_DEBUG'] ?? true, FILTER_VALIDATE_BOOLEAN),
+            'dev_mode' => filter_var($env('APP_DEBUG', true), FILTER_VALIDATE_BOOLEAN),
             'cache_dir' => $rootDir . '/var/cache/doctrine',
             'metadata_dirs' => [$rootDir . '/src/Entity'],
             'connection' => [
-                'driver' => $_ENV['DB_DRIVER'] ?? 'pdo_sqlite',
-                'path' => ($_ENV['DB_DRIVER'] ?? 'pdo_sqlite') === 'pdo_sqlite'
-                    ? (isset($_ENV['DB_PATH']) ? $resolvePath($_ENV['DB_PATH']) : $rootDir . '/var/app.sqlite')
+                'driver' => $env('DB_DRIVER', 'pdo_mysql'),
+                'path' => $env('DB_DRIVER', 'pdo_mysql') === 'pdo_sqlite'
+                    ? ($env('DB_PATH') !== null ? $resolvePath($env('DB_PATH')) : $rootDir . '/var/app.sqlite')
                     : null,
-                'host' => $_ENV['DB_HOST'] ?? '127.0.0.1',
-                'port' => (int) ($_ENV['DB_PORT'] ?? 3306),
-                'dbname' => $_ENV['DB_NAME'] ?? 'slim_app',
-                'user' => $_ENV['DB_USER'] ?? 'root',
-                'password' => $_ENV['DB_PASSWORD'] ?? '',
+                'host' => $env('DB_HOST', '127.0.0.1'),
+                'port' => (int) $env('DB_PORT', 3306),
+                'dbname' => $env('DB_NAME', 'slim_app'),
+                'user' => $env('DB_USER', 'root'),
+                'password' => $env('DB_PASSWORD', ''),
                 'charset' => 'utf8mb4',
             ],
             'migrations' => [
@@ -72,8 +78,8 @@ return [
 
         'logger' => [
             'name' => 'app',
-            'path' => isset($_ENV['LOG_PATH']) ? $resolvePath($_ENV['LOG_PATH']) : $rootDir . '/var/log/app.log',
-            'level' => filter_var($_ENV['APP_DEBUG'] ?? true, FILTER_VALIDATE_BOOLEAN) ? Level::Debug : Level::Info,
+            'path' => $env('LOG_PATH') !== null ? $resolvePath($env('LOG_PATH')) : $rootDir . '/var/log/app.log',
+            'level' => filter_var($env('APP_DEBUG', true), FILTER_VALIDATE_BOOLEAN) ? Level::Debug : Level::Info,
         ],
     ],
 ];
