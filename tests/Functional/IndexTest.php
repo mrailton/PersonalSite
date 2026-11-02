@@ -14,7 +14,10 @@ class IndexTest extends TestCase
     {
         $res = $this->get('/');
 
-        $this->assertStringContainsString('INDEX', (string) $res->getBody());
-        $this->assertEquals(200, $res->getStatusCode());
+        $body = (string) $res->getBody();
+
+        $this->assertSame(200, $res->getStatusCode());
+        $this->assertStringContainsString('Under construction', $body);
+        $this->assertStringContainsString('Something new is on the way', $body);
     }
 }
