@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
+use App\AppFactory;
 use App\Auth\AuthManager;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -39,10 +40,8 @@ class TestCase extends BaseTestCase
 
     protected function bootApp(array $containerOverrides = []): App
     {
-        require_once __DIR__ . '/../bootstrap.php';
-
-        $this->container = createContainer($containerOverrides);
-        $this->app = createApp($this->container);
+        $this->container = AppFactory::createContainer($containerOverrides);
+        $this->app = AppFactory::createApp($this->container);
 
         $this->createDatabaseSchema();
 
@@ -52,7 +51,7 @@ class TestCase extends BaseTestCase
     protected function createDatabaseSchema(): void
     {
         if ($this->container instanceof ContainerInterface && $this->container->has(EntityManagerInterface::class)) {
-            $em = $this->container->get(EntityManagerInterface::class);
+            $em = $this->getEntityManager();
             $schemaTool = new SchemaTool($em);
             $metadata = $em->getMetadataFactory()->getAllMetadata();
 
@@ -63,7 +62,25 @@ class TestCase extends BaseTestCase
 
     protected function getEntityManager(): EntityManagerInterface
     {
-        return $this->container->get(EntityManagerInterface::class);
+        assert($this->container instanceof ContainerInterface);
+        /** @var EntityManagerInterface $em */
+        $em = $this->container->get(EntityManagerInterface::class);
+        return $em;
+    }
+
+    /**
+     * Helper to retrieve typed services from container in tests.
+     *
+     * @template T of object
+     * @param class-string<T> $id
+     * @return T
+     */
+    protected function getService(string $id): object
+    {
+        assert($this->container instanceof ContainerInterface);
+        /** @var T $service */
+        $service = $this->container->get($id);
+        return $service;
     }
 
     protected function authenticateAs(User $user): self
