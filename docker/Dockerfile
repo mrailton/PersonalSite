@@ -7,7 +7,7 @@ COPY composer.json composer.lock ./
 RUN --mount=type=cache,target=/root/.composer/cache composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-interaction --no-progress
 
 # 2. Frontend assets (access to vendor for PHP package assets)
-FROM node:22-alpine AS assets
+FROM node:26-alpine AS assets
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts --no-audit --no-fund
