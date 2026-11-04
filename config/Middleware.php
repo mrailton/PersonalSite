@@ -38,9 +38,16 @@ return function (App $app): void {
             bool $logErrors,
             bool $logErrorDetails,
         ) use ($container): ResponseInterface {
-            $response = $container->get(ResponseFactoryInterface::class)->createResponse(404);
+            assert($container instanceof ContainerInterface);
 
-            return $container->get(Twig::class)->render($response, '404.html.twig');
+            /** @var ResponseFactoryInterface $responseFactory */
+            $responseFactory = $container->get(ResponseFactoryInterface::class);
+            $response = $responseFactory->createResponse(404);
+
+            /** @var Twig $twig */
+            $twig = $container->get(Twig::class);
+
+            return $twig->render($response, '404.html.twig');
         },
     );
 };

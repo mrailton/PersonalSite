@@ -49,7 +49,7 @@ return [
             'connection' => [
                 'driver' => $env('DB_DRIVER', 'pdo_mysql'),
                 'path' => $env('DB_DRIVER', 'pdo_mysql') === 'pdo_sqlite'
-                    ? ($env('DB_PATH') !== null ? $resolvePath($env('DB_PATH')) : $rootDir . '/var/app.sqlite')
+                    ? (is_string($dbPath = $env('DB_PATH')) ? $resolvePath($dbPath) : $rootDir . '/var/app.sqlite')
                     : null,
                 'host' => $env('DB_HOST', '127.0.0.1'),
                 'port' => (int) $env('DB_PORT', 3306),
@@ -78,7 +78,7 @@ return [
 
         'logger' => [
             'name' => 'app',
-            'path' => $env('LOG_PATH') !== null ? $resolvePath($env('LOG_PATH')) : $rootDir . '/var/log/app.log',
+            'path' => is_string($logPath = $env('LOG_PATH')) ? $resolvePath($logPath) : $rootDir . '/var/log/app.log',
             'level' => filter_var($env('APP_DEBUG', true), FILTER_VALIDATE_BOOLEAN) ? Level::Debug : Level::Info,
         ],
     ],
