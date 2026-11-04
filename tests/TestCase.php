@@ -51,7 +51,7 @@ class TestCase extends BaseTestCase
     protected function createDatabaseSchema(): void
     {
         if ($this->container instanceof ContainerInterface && $this->container->has(EntityManagerInterface::class)) {
-            $em = $this->getEntityManager();
+            $em = $this->container->get(EntityManagerInterface::class);
             $schemaTool = new SchemaTool($em);
             $metadata = $em->getMetadataFactory()->getAllMetadata();
 
@@ -62,25 +62,7 @@ class TestCase extends BaseTestCase
 
     protected function getEntityManager(): EntityManagerInterface
     {
-        assert($this->container instanceof ContainerInterface);
-        /** @var EntityManagerInterface $em */
-        $em = $this->container->get(EntityManagerInterface::class);
-        return $em;
-    }
-
-    /**
-     * Helper to retrieve typed services from container in tests.
-     *
-     * @template T of object
-     * @param class-string<T> $id
-     * @return T
-     */
-    protected function getService(string $id): object
-    {
-        assert($this->container instanceof ContainerInterface);
-        /** @var T $service */
-        $service = $this->container->get($id);
-        return $service;
+        return $this->container->get(EntityManagerInterface::class);
     }
 
     protected function authenticateAs(User $user): self

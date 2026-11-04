@@ -19,10 +19,10 @@ $resolvePath = static function (string $path) use ($rootDir): string {
     return $rootDir . '/' . ltrim($path, '/\\');
 };
 
-$env = static function (string $name, mixed $default = null): mixed {
+$env = static function (string $name, string|int|float|bool|null $default = null): string|int|float|bool|null {
     $value = $_ENV[$name] ?? $_SERVER[$name] ?? getenv($name);
 
-    return $value === false || $value === null ? $default : $value;
+    return $value === false ? $default : $value;
 };
 
 return [
