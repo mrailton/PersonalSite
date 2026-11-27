@@ -1,5 +1,5 @@
 # 1. PHP dependencies (cached on composer.json / composer.lock)
-FROM serversideup/php:8.5.12-cli AS deps
+FROM serversideup/php:8.6.0-cli AS deps
 USER root
 RUN install-php-extensions intl
 WORKDIR /app
@@ -22,7 +22,7 @@ COPY src/ ./src/
 RUN composer dump-autoload --no-dev --optimize --classmap-authoritative
 
 # 4. Production Runtime
-FROM serversideup/php:8.5.12-fpm-nginx AS runtime
+FROM serversideup/php:8.6.0-fpm-nginx AS runtime
 
 ENV SSL_MODE=off \
     PHP_OPCACHE_ENABLE=1 \
